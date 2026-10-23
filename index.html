@@ -131,7 +131,7 @@
     .menu .botao { min-height: 40px; padding: 10px 18px; font-size: .82rem; }
 
     /* ============ 1. CAPA ============ */
-    .capa { position: relative; isolation: isolate; overflow: hidden; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; padding: calc(var(--topo) + 40px) 0 56px; }
+    .capa { position: relative; isolation: isolate; overflow: hidden; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; padding: calc(var(--topo) + 40px) 0 104px; }
     .capa-fundo { display: block; position: absolute; inset: 0; z-index: -1; }
     .capa-fundo img { width: 100%; height: 100%; object-fit: cover; object-position: 0% 60%; filter: saturate(.85) brightness(.82); }
     /* Escurece do lado do texto, pra o dourado brilhar sem brigar com a foto */
@@ -155,6 +155,19 @@
     .resumo-oferta li { display: flex; align-items: center; gap: 8px; }
     .resumo-oferta b { color: var(--ouro-claro); font-weight: 600; }
     .resumo-oferta li[hidden] { display: none; }
+    .numeros-capa { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 8px; margin: 26px 0 0; }
+    .numeros-capa div { padding: 10px 16px; border: 1px solid var(--linha); border-radius: var(--raio-g); background: rgba(13, 11, 9, .45); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+    .numeros-capa strong { display: block; font-family: var(--serif); font-weight: 400; font-size: clamp(1.4rem, 2.2vw, 1.8rem); line-height: 1.1; color: var(--ouro-claro); }
+    .numeros-capa span { font-size: .74rem; color: var(--bege-suave); }
+
+    /* Faixa de marcas, no pé da capa */
+    .faixa-marcas { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; border-top: 1px solid var(--linha); border-bottom: 1px solid var(--linha); padding: 13px 0; overflow: hidden; background: rgba(13, 11, 9, .7); }
+    .trilho { display: flex; width: max-content; animation: desliza 60s linear infinite; }
+    .trilho ul { display: flex; list-style: none; margin: 0; padding: 0; }
+    .trilho li { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--bege); padding: 0 24px; white-space: nowrap; display: flex; align-items: center; gap: 48px; }
+    .trilho li::after { content: ""; width: 8px; height: 8px; background: var(--ouro); margin-right: -24px; clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%); }
+    .faixa-marcas:hover .trilho { animation-play-state: paused; }
+    @keyframes desliza { to { transform: translateX(-50%); } }
 
     /* ============ 2. OFERTA ============ */
     .oferta-grade { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
@@ -172,6 +185,14 @@
     .cartao-oferta .nome-pacote { font-size: .74rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--ouro); margin: 0 0 10px; }
     .cartao-oferta h3 { font-size: clamp(1.8rem, 3.2vw, 2.5rem); line-height: 1.1; margin-bottom: 10px; }
     .cartao-oferta .condicao { color: var(--bege-suave); margin-bottom: 22px; }
+    /* Funil: os 3 vídeos como degraus, do mais largo (topo) ao mais estreito (fundo) */
+    .funil { list-style: none; margin: 0 0 22px; padding: 0; display: grid; gap: 6px; }
+    .funil li { display: grid; grid-template-columns: 112px 1fr; gap: 12px; align-items: center; padding: 11px 14px; border: 1px solid var(--linha); border-radius: var(--raio); background: rgba(13, 11, 9, .35); }
+    .funil li:nth-child(2) { margin: 0 4%; }
+    .funil li:nth-child(3) { margin: 0 8%; border-color: var(--ouro-escuro); background: linear-gradient(160deg, rgba(200, 164, 93, .16), rgba(13, 11, 9, .35)); }
+    .funil .etapa { font-size: .62rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--ouro); }
+    .funil .etapa b { display: block; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 1.05rem; letter-spacing: 0; text-transform: none; color: var(--bege); margin-top: 2px; }
+    .funil p { margin: 0; font-size: .86rem; line-height: 1.45; color: var(--bege-suave); }
     .itens-oferta { list-style: none; margin: 0 0 22px; padding: 0; border-top: 1px solid var(--linha); }
     .itens-oferta li { position: relative; padding: 11px 0 11px 24px; border-bottom: 1px solid var(--linha); font-size: .95rem; }
     .itens-oferta li::before { content: ""; position: absolute; left: 2px; top: 19px; width: 9px; height: 9px; background: var(--ouro); clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%); }
@@ -191,6 +212,15 @@
     .por-que b { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--ouro); }
     .por-que span { font-size: .95rem; color: var(--bege); }
 
+    /* ============ SOBRE ============ */
+    .sobre-grade { display: grid; grid-template-columns: minmax(0, 340px) 1fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
+    .sobre-foto { aspect-ratio: 4 / 5; border-radius: 999px 999px var(--raio-g) var(--raio-g); outline: 1px solid var(--linha-forte); outline-offset: 10px; }
+    .sobre-foto img { object-position: 50% 60%; }
+    .sobre-texto .titulo-secao { margin-bottom: 22px; }
+    .sobre-texto p { color: var(--bege-suave); max-width: 54ch; }
+    .assinatura { font-family: "Allura", var(--serif); font-size: 2.2rem; line-height: 1; margin: 18px 0 0; background: var(--brilho-ouro); -webkit-background-clip: text; background-clip: text; color: transparent !important; }
+    .assinatura small { display: block; font-family: var(--sans); font-size: .68rem; font-weight: 600; letter-spacing: .26em; text-transform: uppercase; margin-top: 6px; color: var(--bege-fraco); -webkit-text-fill-color: var(--bege-fraco); }
+
     /* ============ 3. CASE ============ */
     .case { display: grid; grid-template-columns: minmax(0, 300px) 1fr; gap: clamp(36px, 6vw, 90px); align-items: center; }
     .case-video { border: 0; padding: 0; background: none; cursor: pointer; width: 100%; text-align: left; display: block; color: inherit; }
@@ -200,6 +230,10 @@
     .case-video:hover .play svg, .abre-video:hover .play svg { fill: var(--noite); }
     .case-marca { display: block; width: fit-content; font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ouro-claro); border: 1px solid var(--linha-forte); border-radius: 999px; padding: 7px 14px; margin: 18px 0 22px; }
     .case-texto > p { color: var(--bege-suave); max-width: 58ch; }
+    .historia { margin: 0; display: grid; gap: 0; border-top: 1px solid var(--linha); max-width: 62ch; }
+    .historia div { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--linha); }
+    .historia dt { font-size: .66rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--ouro); padding-top: 4px; }
+    .historia dd { margin: 0; font-size: .95rem; line-height: 1.55; color: var(--bege-suave); }
     .case-numeros { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 24px 0; }
     .case-numeros div { display: flex; flex-direction: column-reverse; justify-content: flex-end; padding: 14px 16px; border: 1px solid var(--linha); border-radius: var(--raio); background: var(--noite-3); }
     .case-numeros div:first-child { border-color: var(--ouro-escuro); background: linear-gradient(160deg, rgba(200, 164, 93, .14), var(--noite-3)); }
@@ -308,9 +342,23 @@
     .js .revelar.visivel { opacity: 1; transform: none; }
 
     /* ============ RESPONSIVO ============ */
+    /* Notebooks com tela mais baixa: a capa encolhe pra faixa de marcas aparecer sem rolar */
+    @media (max-height: 900px) and (min-width: 1101px) {
+      .capa { padding-top: calc(var(--topo) + 16px); padding-bottom: 76px; }
+      .selo-black { margin-bottom: 14px; }
+      .nome-capa { font-size: clamp(3rem, 12vh, 6.8rem); }
+      .posicionamento { margin: 14px 0 8px; font-size: 1.4rem; }
+      .capa .frase { margin-bottom: 18px; font-size: .98rem; line-height: 1.55; }
+      .resumo-oferta { margin-top: 16px; padding-top: 12px; }
+      .numeros-capa { margin-top: 12px; }
+      .numeros-capa div { padding: 8px 14px; }
+    }
+
     /* Capa: abaixo de 1100px a foto vai pra cima e o texto desce pro preto, pra não cobrir o rosto */
     @media (max-width: 1100px) {
-      .capa { display: block; min-height: 0; padding: var(--topo) 0 36px; }
+      .capa { display: block; min-height: 0; padding: var(--topo) 0 0; }
+      .capa-conteudo { padding-bottom: 34px; }
+      .faixa-marcas { position: relative; }
       .capa-fundo { position: relative; inset: auto; height: 96vw; max-height: 520px; }
       .capa-fundo img { object-position: 50% 25%; }
       .capa-fundo::after { background: linear-gradient(0deg, var(--noite) 0%, rgba(13, 11, 9, .35) 40%, rgba(13, 11, 9, 0) 70%); }
@@ -350,9 +398,31 @@
       .capa .frase { font-size: .95rem; margin-bottom: 22px; }
       .acoes .botao { flex: 1 1 100%; }
       .resumo-oferta { font-size: .78rem; gap: 6px 16px; }
+      .numeros-capa { grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 22px; }
+      .numeros-capa div { padding: 9px 10px; }
+      .numeros-capa strong { font-size: 1.3rem; }
+      .numeros-capa span { display: block; font-size: .66rem; line-height: 1.3; }
+      .trilho li { font-size: .95rem; }
 
       .cartao-oferta { padding: 26px 20px; }
       .detalhes-oferta dd { font-size: 1.05rem; }
+
+      /* Sobre: foto pequena ao lado do título, texto embaixo */
+      .sobre-grade { grid-template-columns: 38% minmax(0, 1fr); column-gap: 18px; row-gap: 0; }
+      .sobre-foto { grid-column: 1; grid-row: 1; outline-offset: 5px; }
+      .sobre-texto { display: contents; }
+      .sobre-texto .rotulo, .sobre-texto .titulo-secao { grid-column: 2; grid-row: 1; }
+      .sobre-texto .rotulo { align-self: start; margin-top: 14px; font-size: .58rem; }
+      .sobre-texto .titulo-secao { align-self: center; font-size: 1.4rem; margin: 0; }
+      .sobre-texto > p { grid-column: 1 / -1; font-size: .92rem; }
+      .sobre-texto > p:first-of-type:not(.rotulo) { margin-top: 24px; }
+      .sobre-texto > p.assinatura { font-size: 2rem; }
+
+      /* Funil: etapa em cima, explicação embaixo */
+      .funil li { grid-template-columns: 1fr; gap: 2px; padding: 10px 14px; }
+      .funil li:nth-child(2) { margin: 0 3%; }
+      .funil li:nth-child(3) { margin: 0 6%; }
+      .funil .etapa b { display: inline; margin: 0 0 0 8px; }
 
       /* Case: vídeo pequeno ao lado do título */
       .case { grid-template-columns: 40% minmax(0, 1fr); column-gap: 18px; row-gap: 0; align-items: center; }
@@ -364,8 +434,11 @@
       .case-texto .rotulo { align-self: start; margin-top: 8px; font-size: .58rem; letter-spacing: .16em; }
       .case-texto .titulo-secao { align-self: center; font-size: 1.4rem; }
       .case-texto .case-marca { align-self: end; margin: 0 0 6px; font-size: .56rem; padding: 6px 10px; }
-      .case-texto > p:not(.rotulo):not(.case-marca), .case-numeros, .case-conclusao { grid-column: 1 / -1; }
-      .case-texto > p.descricao { margin-top: 26px; font-size: .92rem; }
+      .case-texto > p:not(.rotulo):not(.case-marca), .historia, .case-numeros, .case-conclusao { grid-column: 1 / -1; }
+      .historia { margin-top: 24px; }
+      .historia div { grid-template-columns: 1fr; gap: 4px; padding: 11px 0; }
+      .historia dt { padding-top: 0; }
+      .historia dd { font-size: .9rem; }
       .case-numeros { gap: 6px; margin: 16px 0 14px; }
       .case-numeros div { padding: 10px; }
       .case-numeros dd { font-size: 1.08rem; }
@@ -404,6 +477,9 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
       .js .revelar { opacity: 1; transform: none; }
+      /* Sem animação: a faixa de marcas fica numa linha só e a pessoa arrasta pro lado */
+      .trilho { animation: none; width: auto; overflow-x: auto; scrollbar-width: none; }
+      .trilho ul[aria-hidden="true"] { display: none; }
     }
   </style>
 </head>
@@ -417,6 +493,7 @@
       <nav aria-label="Navegação principal">
         <ul>
           <li><a href="#oferta">A oferta</a></li>
+          <li><a href="#sobre">Sobre</a></li>
           <li><a href="#case">Case</a></li>
           <li><a href="#selecao">Vídeos</a></li>
           <li><a href="#como">Como funciona</a></li>
@@ -451,7 +528,14 @@
             <li id="resumoVagas"><span class="estrela" aria-hidden="true" style="width:8px;height:8px;color:var(--ouro)"></span><span></span></li>
             <li id="resumoValidade"><span class="estrela" aria-hidden="true" style="width:8px;height:8px;color:var(--ouro)"></span><span></span></li>
           </ul>
+          <!-- Os números vêm do array "numerosCapa" no script -->
+          <div class="numeros-capa" id="numerosCapa"></div>
         </div>
+      </div>
+
+      <!-- Faixa de marcas: os nomes vêm do array "marcas" no script -->
+      <div class="faixa-marcas" aria-label="Marcas atendidas">
+        <div class="trilho" id="trilhoMarcas"></div>
       </div>
     </section>
 
@@ -477,6 +561,7 @@
           <p class="nome-pacote" id="nomePacote"></p>
           <h3 id="nomeOferta"></h3>
           <p class="condicao" id="condicaoOferta"></p>
+          <ol class="funil" id="funilOferta" aria-label="Os três vídeos, um para cada etapa da compra"></ol>
           <ul class="itens-oferta" id="itensOferta"></ul>
           <p class="preco-oferta" id="precoOferta"></p>
           <dl class="detalhes-oferta" id="detalhesOferta"></dl>
@@ -485,6 +570,24 @@
         </article>
       </div>
     </section>
+
+    <!-- ============ SOBRE ============ -->
+    <section id="sobre" aria-labelledby="titulo-sobre">
+      <div class="container sobre-grade">
+        <div class="midia sobre-foto revelar">
+          <img src="fotos/sobre.webp" alt="Yasmin Caetano sorrindo, sentada em um restaurante com plantas e letreiro em neon" width="750" height="1104" loading="lazy">
+        </div>
+        <div class="sobre-texto revelar">
+          <p class="rotulo">Quem cria</p>
+          <h2 class="titulo-secao" id="titulo-sobre">Olhar de maquiadora, <em>roteiro</em> de estrategista.</h2>
+          <p>Sou Yasmin Caetano, criadora de conteúdo UGC em Natal RN. Minha base vem da maquiagem artística: o olhar treinado pra luz, textura e composição entra em cada roteiro que escrevo.</p>
+          <p>É assim que transformo um produto em conceito visual, com cenário, referência e narrativa, e mostro o que existe além da embalagem.</p>
+          <p class="assinatura">Yasmin Caetano<small>UGC Creator</small></p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="fio">
 
     <!-- ============ 3. CASE DE DESTAQUE ============ -->
     <section id="case" aria-labelledby="titulo-case">
@@ -500,7 +603,11 @@
             <p class="rotulo">Case de destaque</p>
             <h2 class="titulo-secao" id="titulo-case">Um vídeo que <em>performou</em> no tráfego pago.</h2>
             <p class="case-marca">Bombado · Gastronomia</p>
-            <p class="descricao">Uma experiência gastronômica que virou alcance, interação e crescimento. A marca usou o conteúdo no tráfego pago, e ele gerou muito mais do que visualizações: gerou novas conexões com a marca.</p>
+            <dl class="historia">
+              <div><dt>O desafio</dt><dd>Mostrar a experiência do Bombado de um jeito que desse vontade de ir, num vídeo que também funcionasse como anúncio no tráfego pago.</dd></div>
+              <div><dt>A estratégia</dt><dd>Em vez de apresentar o cardápio, explorei o ambiente, a comida e a experiência de forma espontânea, com cara de visita real, e não de publicidade.</dd></div>
+              <div><dt>O resultado</dt><dd>Muito mais do que visualizações: alcance, interação e novos seguidores, com custo baixo por visita ao perfil.</dd></div>
+            </dl>
             <dl class="case-numeros">
               <div><dt>visualizações</dt><dd>70.900</dd></div>
               <div><dt>pessoas alcançadas</dt><dd>33.505</dd></div>
@@ -637,9 +744,15 @@
       titulo: "Criativos de campanha pra sua Black",
       // Condição especial, em uma frase
       condicao: "Uma condição exclusiva desta temporada, pra você testar mais criativos sem aumentar o orçamento.",
+      // Os 3 vídeos do pacote, um pra cada etapa da compra. Deixe a lista vazia [] pra esconder o bloco.
+      funil: [
+        { etapa: "Topo", titulo: "Atrair", texto: "Pra quem ainda não conhece a sua marca parar no anúncio." },
+        { etapa: "Meio", titulo: "Convencer", texto: "O produto em uso, na vida real, pra gerar confiança." },
+        { etapa: "Fundo", titulo: "Converter", texto: "Pra levar à compra no momento exato da oferta." }
+      ],
       // O que está incluso. Os itens com bonus: true ganham a etiqueta "Bônus"
       itens: [
-        { texto: "3 vídeos criativos com roteiro estratégico" },
+        { texto: "3 vídeos com roteiro estratégico, um pra cada etapa do funil" },
         { texto: "6 fotos profissionais" },
         { texto: "90 dias de direito de uso em anúncios" },
         { texto: "Uso vitalício nas redes sociais" },
@@ -654,6 +767,27 @@
       // Texto pequeno embaixo do botão
       nota: "Reservas por ordem de confirmação."
     };
+
+    // Marcas da faixa da capa, na ordem em que aparecem: as mais conhecidas abrem a faixa.
+    // A quantidade de marcas alimenta sozinha os números "vídeos entregues" e "marcas atendidas".
+    const marcas = [
+      "Shein", "Amazon", "Shopee", "Mercado Livre", "Conmebol",
+      "Dove", "Pantene", "Garnier", "Tresemmé", "Lux",
+      "Sallve", "Principia", "Bepantol Derma", "CBSkin",
+      "Sheglam", "Dermacol", "Sace Lady", "Dossier", "TTDeye", "Honey Color", "Pinky Paradise",
+      "Farinha Láctea", "Kind",
+      "Bombado", "Camarão na Telha", "Maná", "Matutos", "Nicks Burger", "Espetaria Premium", "Cookitos", "DeliCookies",
+      "Domidona", "Gocase",
+      "Acer",
+      "Néctar", "Eizz", "Revien", "Ollie", "Hydratta"
+    ];
+
+    // Números curtos da capa
+    const numerosCapa = [
+      { numero: "+" + marcas.length, rotulo: "vídeos entregues" },
+      { numero: "+" + marcas.length, rotulo: "marcas atendidas" },
+      { numero: "4,6M", rotulo: "curtidas no TikTok" }
+    ];
 
     // WhatsApp: não aparece escrito no site, só abre quando a marca clica num botão
     const WHATSAPP = "5581989857308";
@@ -727,12 +861,20 @@
     const resumo = [["resumoVagas", OFERTA.vagas && `<b>${esc(OFERTA.vagas)}</b> nesta agenda`], ["resumoValidade", OFERTA.validade && `Reservas até <b>${esc(OFERTA.validade)}</b>`]];
     resumo.forEach(([id, html]) => { if (html) $(id).lastElementChild.innerHTML = html; else $(id).hidden = true; });
     if (!OFERTA.vagas && !OFERTA.validade) $("resumoOferta").hidden = true;
+    $("numerosCapa").innerHTML = numerosCapa.map(n => `<div><strong>${esc(n.numero)}</strong><span>${esc(n.rotulo)}</span></div>`).join("");
+    const listaMarcas = marcas.map(m => `<li>${esc(m)}</li>`).join("");
+    $("trilhoMarcas").innerHTML = `<ul>${listaMarcas}</ul><ul aria-hidden="true">${listaMarcas}</ul>`;
+    $("trilhoMarcas").style.animationDuration = (marcas.length * 1.6) + "s";
 
     // Cartão da oferta
     preenche("nomePacote", OFERTA.pacote);
     preenche("nomeOferta", OFERTA.titulo);
     preenche("condicaoOferta", OFERTA.condicao);
     preenche("notaOferta", OFERTA.nota);
+    const funil = OFERTA.funil || [];
+    $("funilOferta").innerHTML = funil.map(f =>
+      `<li><span class="etapa">${esc(f.etapa)}<b>${esc(f.titulo)}</b></span><p>${esc(f.texto)}</p></li>`).join("");
+    $("funilOferta").hidden = funil.length === 0;
     $("itensOferta").innerHTML = OFERTA.itens.map(it =>
       `<li${it.bonus ? ' class="bonus"' : ""}>${it.bonus ? "<b>Bônus</b>" : ""}${esc(it.texto)}</li>`).join("");
     if (OFERTA.preco) $("precoOferta").innerHTML = (OFERTA.precoDe ? `<s>${esc(OFERTA.precoDe)}</s>` : "") + esc(OFERTA.preco);
