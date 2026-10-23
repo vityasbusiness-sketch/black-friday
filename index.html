@@ -261,6 +261,20 @@
 
     /* ============ 4. SELEÇÃO DE VÍDEOS ============ */
     .galeria { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 2vw, 24px); list-style: none; margin: 0; padding: 0; }
+    .trabalho { animation: surge .5s ease both; }
+    @keyframes surge { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    .filtros { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .filtro {
+      display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 10px 18px; border-radius: 999px; cursor: pointer;
+      font: 500 .9rem/1 var(--sans); color: var(--bege); background: transparent; border: 1px solid var(--linha-forte);
+      transition: background .3s ease, color .3s ease, border-color .3s ease;
+    }
+    .filtro span { font-size: .72rem; color: var(--bege-fraco); }
+    .filtro:hover { border-color: var(--ouro); }
+    .filtro[aria-pressed="true"] { background: var(--ouro); border-color: var(--ouro); color: var(--noite); }
+    .filtro[aria-pressed="true"] span { color: rgba(13, 11, 9, .65); }
+    .filtro-black::before { content: ""; width: 9px; height: 9px; background: currentColor; clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%); }
+    .descricao-nicho { margin: 0 0 24px; font-size: .92rem; color: var(--bege-suave); min-height: 1.5em; }
     .abre-video { display: block; width: 100%; padding: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
     .abre-video .midia { aspect-ratio: 3 / 4; transition: transform .5s ease; }
     .abre-video:hover .midia { transform: scale(.98); }
@@ -471,6 +485,10 @@
       .galeria { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .trabalho h3 { font-size: .95rem; }
       .trabalho .formato { font-size: .6rem; letter-spacing: .08em; }
+      .filtros { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 calc(var(--gutter) * -1) 12px; padding: 0 var(--gutter); }
+      .filtros::-webkit-scrollbar { display: none; }
+      .filtro { flex: none; padding: 10px 15px; font-size: .85rem; }
+      .descricao-nicho { font-size: .85rem; margin-bottom: 18px; }
       .abre-video .play { width: 40px; height: 40px; }
       .abre-video .play svg { width: 14px; height: 14px; }
 
@@ -515,11 +533,11 @@
       <a class="logo" href="#topo">Yasmin <em>Caetano</em><small>Black</small></a>
       <nav aria-label="Navegação principal">
         <ul>
-          <li><a href="#oferta">Pacotes</a></li>
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#case">Case</a></li>
           <li><a href="#selecao">Vídeos</a></li>
           <li><a href="#como">Como funciona</a></li>
+          <li><a href="#oferta">Pacotes</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
       </nav>
@@ -564,36 +582,6 @@
 
     <hr class="fio">
 
-    <!-- ============ 2. OFERTA ============ -->
-    <section class="alterna" id="oferta" aria-labelledby="titulo-oferta">
-      <div class="container">
-        <div class="oferta-grade">
-          <div class="oferta-texto revelar">
-            <p class="rotulo">Pacotes de Black</p>
-            <h2 class="titulo-secao" id="titulo-oferta">A Black se decide <em>agora</em>, não na semana da data.</h2>
-            <p>A marca não grava na semana da Black: ela fecha antes, pra ter criativo rodando quando o dia chegar. Por isso a minha agenda de novembro tem datas de fechamento e de produto em mãos.</p>
-            <p>O desconto de Black fica nos pacotes. É neles que a sua marca ganha volume e variação de criativo, que é o que a data pede.</p>
-          </div>
-          <!-- Os motivos vêm do array "porQueAgora" no script -->
-          <ul class="por-que revelar" id="porQueAgora"></ul>
-        </div>
-
-        <!-- Os pacotes vêm de OFERTA.pacotes, no script -->
-        <ul class="pacotes-black" id="listaPacotes"></ul>
-        <p class="nota-oferta" id="notaOferta"></p>
-
-        <div class="condicoes revelar">
-          <h3 class="subtitulo-oferta">Vale pra todos os pacotes</h3>
-          <dl class="lista-condicoes" id="listaCondicoes"></dl>
-        </div>
-
-        <div class="formatos-black revelar">
-          <h3 class="subtitulo-oferta">O que eu gravo pra Black</h3>
-          <ul class="chips" id="formatosBlack"></ul>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ SOBRE ============ -->
     <section id="sobre" aria-labelledby="titulo-sobre">
       <div class="container sobre-grade">
@@ -610,10 +598,8 @@
       </div>
     </section>
 
-    <hr class="fio">
-
     <!-- ============ 3. CASE DE DESTAQUE ============ -->
-    <section id="case" aria-labelledby="titulo-case">
+    <section class="alterna" id="case" aria-labelledby="titulo-case">
       <div class="container">
         <div class="case">
           <button type="button" class="case-video revelar" id="abreDestaque" aria-label="Assistir ao vídeo feito para o Bombado">
@@ -645,24 +631,25 @@
       </div>
     </section>
 
-    <hr class="fio">
-
     <!-- ============ 4. SELEÇÃO DE VÍDEOS ============ -->
-    <section class="alterna" id="selecao" aria-labelledby="titulo-selecao">
+    <section id="selecao" aria-labelledby="titulo-selecao">
       <div class="container">
         <div class="cabeca-secao revelar">
           <div>
-            <p class="rotulo">Seleção</p>
-            <h2 class="titulo-secao" id="titulo-selecao">Linguagem de <em>campanha</em>, em cada nicho.</h2>
+            <p class="rotulo">Vídeos por nicho</p>
+            <h2 class="titulo-secao" id="titulo-selecao">Escolha o seu nicho, veja o <em>formato</em>.</h2>
           </div>
-          <p class="apoio">Beleza, moda, gastronomia e tecnologia. Toque em um vídeo pra assistir aqui mesmo.</p>
+          <p class="apoio">Cada nicho com vários vídeos e formatos diferentes. Toque em um vídeo pra assistir aqui mesmo.</p>
         </div>
-        <ul class="galeria" id="galeria"></ul>
+        <!-- Os filtros e os vídeos vêm dos arrays "nichos" e "videos" no script -->
+        <div class="filtros revelar" id="filtros" role="group" aria-label="Filtrar vídeos por nicho"></div>
+        <p class="descricao-nicho" id="descricaoNicho" aria-live="polite"></p>
+        <ul class="galeria" id="galeria" aria-live="polite"></ul>
       </div>
     </section>
 
     <!-- ============ 5. FOTOS ============ -->
-    <section id="fotos" aria-labelledby="titulo-fotos">
+    <section class="alterna" id="fotos" aria-labelledby="titulo-fotos">
       <div class="container">
         <div class="cabeca-secao revelar">
           <div>
@@ -681,10 +668,23 @@
       </div>
     </section>
 
+    <!-- ============ 7. DEPOIMENTOS ============ -->
+    <section id="depoimentos" aria-labelledby="titulo-depoimentos">
+      <div class="container">
+        <div class="cabeca-secao revelar">
+          <div>
+            <p class="rotulo">Quem já criou comigo</p>
+            <h2 class="titulo-secao" id="titulo-depoimentos">Marcas que <em>voltariam</em>.</h2>
+          </div>
+        </div>
+        <ul class="depoimentos revelar" id="listaDepoimentos" tabindex="0" aria-label="Depoimentos de clientes, role para o lado para ver mais"></ul>
+      </div>
+    </section>
+
     <hr class="fio">
 
     <!-- ============ 6. COMO FUNCIONA ============ -->
-    <section class="alterna" id="como" aria-labelledby="titulo-como">
+    <section id="como" aria-labelledby="titulo-como">
       <div class="container">
         <div class="cabeca-secao revelar">
           <div>
@@ -697,16 +697,33 @@
       </div>
     </section>
 
-    <!-- ============ 7. DEPOIMENTOS ============ -->
-    <section id="depoimentos" aria-labelledby="titulo-depoimentos">
+    <!-- ============ 2. OFERTA ============ -->
+    <section class="alterna" id="oferta" aria-labelledby="titulo-oferta">
       <div class="container">
-        <div class="cabeca-secao revelar">
-          <div>
-            <p class="rotulo">Quem já criou comigo</p>
-            <h2 class="titulo-secao" id="titulo-depoimentos">Marcas que <em>voltariam</em>.</h2>
+        <div class="oferta-grade">
+          <div class="oferta-texto revelar">
+            <p class="rotulo">Pacotes de Black</p>
+            <h2 class="titulo-secao" id="titulo-oferta">A Black se decide <em>agora</em>, não na semana da data.</h2>
+            <p>A marca não grava na semana da Black: ela fecha antes, pra ter criativo rodando quando o dia chegar. Por isso a minha agenda de novembro tem datas de fechamento e de produto em mãos.</p>
+            <p>O desconto de Black fica nos pacotes. É neles que a sua marca ganha volume e variação de criativo, que é o que a data pede.</p>
           </div>
+          <!-- Os motivos vêm do array "porQueAgora" no script -->
+          <ul class="por-que revelar" id="porQueAgora"></ul>
         </div>
-        <ul class="depoimentos revelar" id="listaDepoimentos" tabindex="0" aria-label="Depoimentos de clientes, role para o lado para ver mais"></ul>
+
+        <!-- Os pacotes vêm de OFERTA.pacotes, no script -->
+        <ul class="pacotes-black" id="listaPacotes"></ul>
+        <p class="nota-oferta" id="notaOferta"></p>
+
+        <div class="condicoes revelar">
+          <h3 class="subtitulo-oferta">Vale pra todos os pacotes</h3>
+          <dl class="lista-condicoes" id="listaCondicoes"></dl>
+        </div>
+
+        <div class="formatos-black revelar">
+          <h3 class="subtitulo-oferta">O que eu gravo pra Black</h3>
+          <ul class="chips" id="formatosBlack"></ul>
+        </div>
       </div>
     </section>
 
@@ -846,17 +863,47 @@
     // Vídeo do case (YouTube Shorts: o código que vem depois de "shorts/" no link)
     const VIDEO_DESTAQUE = "GMK9yJPUJbk";
 
-    // Seleção de vídeos. O nome da marca e o formato vêm do título do YouTube ("Marca • Formato").
-    // Para trocar, mude o id. Para escrever na mão, preencha marca e formato.
+    // Nichos dos filtros, na ordem em que aparecem. O primeiro abre selecionado.
+    // "black" junta os vídeos marcados com black: true, de qualquer nicho.
+    const nichos = [
+      { id: "black", nome: "Pra Black", descricao: "Formatos que mais rodam na Black: oferta, unboxing, antes e depois, lo-fi e anúncio." },
+      { id: "beleza", nome: "Beleza", descricao: "Skincare, makeup, cabelo e corpo, cada um num formato diferente." },
+      { id: "moda", nome: "Moda", descricao: "Calçados, bolsas e acessórios, do review à transformação de look." },
+      { id: "gastronomia", nome: "Gastronomia", descricao: "Restaurante, receita e anúncio: a experiência que dá vontade de ir." },
+      { id: "tecnologia", nome: "Tech e varejo", descricao: "Marketplace e tecnologia, inclusive campanhas de Black Friday." }
+    ];
+
+    // Vídeos (YouTube Shorts). id: o código que vem depois de "shorts/" no link.
+    // Os melhores de cada nicho ficam primeiro, com no máximo 3 do mesmo formato.
     const videos = [
-      { id: "pvpWG6x2ucA", nicho: "Skincare", marca: "", formato: "" },
-      { id: "SpHDfJ-BWOk", nicho: "Makeup", marca: "", formato: "" },
-      { id: "mwWG5L3VRW4", nicho: "Haircare", marca: "", formato: "" },
-      { id: "mYr7VDvsxYo", nicho: "Bodycare", marca: "", formato: "" },
-      { id: "xZuFjGpek0M", nicho: "Moda", marca: "", formato: "" },
-      { id: "eQKGJGUUxA8", nicho: "Acessórios", marca: "", formato: "" },
-      { id: "KHrjhYwHz_w", nicho: "Gastronomia", marca: "", formato: "" },
-      { id: "HNMgo5j_ONY", nicho: "Tecnologia", marca: "", formato: "" }
+      // Beleza
+      { id: "mwWG5L3VRW4", nicho: "beleza", marca: "Elseve", formato: "Storytelling" },
+      { id: "pvpWG6x2ucA", nicho: "beleza", marca: "Revien", formato: "Review" },
+      { id: "S1xfDL7h_Tw", nicho: "beleza", marca: "Sheglam", formato: "Antes e depois", black: true },
+      { id: "5MUp_H9r6lk", nicho: "beleza", marca: "Ollie", formato: "Problema x solução", black: true },
+      { id: "w6-MqP7ZRr4", nicho: "beleza", marca: "CBSkin", formato: "Unboxing", black: true },
+      { id: "BsOCinxvmbw", nicho: "beleza", marca: "Kind Beauty", formato: "Demonstração" },
+      { id: "7Qa5xWTfAuo", nicho: "beleza", marca: "Aura Beauty", formato: "Lo-fi", black: true },
+      { id: "AJQwc90nzIU", nicho: "beleza", marca: "Pantene", formato: "Criativo" },
+      // Moda
+      { id: "xZuFjGpek0M", nicho: "moda", marca: "Domidona", formato: "Review" },
+      { id: "eQKGJGUUxA8", nicho: "moda", marca: "GoCase", formato: "Storytelling" },
+      { id: "I4llRk5BCdw", nicho: "moda", marca: "Shein", formato: "Review" },
+      { id: "6jdHd0K3b_4", nicho: "moda", marca: "Domidona", formato: "Demonstração", black: true },
+      { id: "54a_MPOI124", nicho: "moda", marca: "Saint Germain", formato: "Storytelling" },
+      { id: "3forMuneVmo", nicho: "moda", marca: "Domidona", formato: "Storytelling" },
+      // Gastronomia
+      { id: "GMK9yJPUJbk", nicho: "gastronomia", marca: "Bombado", formato: "Anúncio" },
+      { id: "KHrjhYwHz_w", nicho: "gastronomia", marca: "Farinha Láctea", formato: "Receita" },
+      { id: "Gi5gqFu8oX4", nicho: "gastronomia", marca: "Camarão na Telha", formato: "Storytelling" },
+      { id: "RsC91pApMrA", nicho: "gastronomia", marca: "Cookitos", formato: "Anúncio", black: true },
+      { id: "5L0vDLj5ubs", nicho: "gastronomia", marca: "Nicks Burger", formato: "Review" },
+      { id: "fZKi578gXLc", nicho: "gastronomia", marca: "Farinha Láctea", formato: "Storytelling" },
+      // Tech e varejo
+      { id: "o6m2-1l1U0w", nicho: "tecnologia", marca: "Amazon", formato: "Black Friday", black: true },
+      { id: "_lm4xX2D5RA", nicho: "tecnologia", marca: "Mercado Livre", formato: "Black Friday", black: true },
+      { id: "HNMgo5j_ONY", nicho: "tecnologia", marca: "Acer", formato: "Institucional" },
+      { id: "1z5ZKTFDaag", nicho: "tecnologia", marca: "Conmebol", formato: "Institucional" }
     ];
 
     const fotosUgc = [
@@ -949,37 +996,25 @@
 
     $("barraTexto").textContent = "Agenda de novembro aberta" + (OFERTA.fechamento ? " · fechamento até " + OFERTA.fechamento : "");
 
-    // Seleção de vídeos
-    const galeria = $("galeria");
-    function desenhaGaleria() {
-      galeria.innerHTML = videos.map(v => `<li class="trabalho revelar visivel"><button type="button" class="abre-video" data-video="${esc(v.id)}" aria-label="Assistir vídeo de ${esc(v.marca || v.nicho)}">
+    // Vídeos por nicho: um filtro por nicho, só os nichos que têm vídeo
+    const galeria = $("galeria"), filtros = $("filtros");
+    const doNicho = id => id === "black" ? videos.filter(v => v.black) : videos.filter(v => v.nicho === id);
+    const nichoDe = id => (nichos.find(n => n.id === id) || { nome: "" }).nome;
+    function desenhaGaleria(id) {
+      filtros.querySelectorAll(".filtro").forEach(b => b.setAttribute("aria-pressed", b.dataset.nicho === id));
+      $("descricaoNicho").textContent = (nichos.find(n => n.id === id) || {}).descricao || "";
+      galeria.innerHTML = doNicho(id).map(v => `<li class="trabalho"><button type="button" class="abre-video" data-video="${esc(v.id)}" aria-label="Assistir vídeo de ${esc(v.marca)}, ${esc(v.formato)}">
         <div class="midia"><img src="https://i.ytimg.com/vi/${esc(v.id)}/oardefault.jpg" alt="" loading="lazy" onerror="if(this.dataset.f){this.remove()}else{this.dataset.f=1;this.src='https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg'}"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span></div>
-        <div class="info"><h3>${esc(v.marca || v.nicho)}</h3><span class="formato">${esc(v.marca ? (v.formato || v.nicho) : "Vídeo UGC")}</span></div></button></li>`).join("");
+        <div class="info"><h3>${esc(v.marca)}</h3><span class="formato">${esc(v.formato)}${id === "black" ? " · " + esc(nichoDe(v.nicho)) : ""}</span></div></button></li>`).join("");
     }
-    desenhaGaleria();
-
-    // Lê o título de cada vídeo no YouTube ("Marca • Formato") e guarda no navegador
-    const titulosYT = (() => { try { return JSON.parse(localStorage.getItem("titulosYT") || "{}"); } catch (e) { return {}; } })();
-    function aplicaTitulo(v, titulo) {
-      const partes = String(titulo).split(/\s*[•·|]\s*/).filter(Boolean);
-      const maiuscula = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
-      if (!v.marca) v.marca = maiuscula(partes[0] || "");
-      if (!v.formato && partes.length > 1) v.formato = maiuscula(partes.slice(1).join(" · "));
-    }
-    videos.forEach(v => { if (titulosYT[v.id]) aplicaTitulo(v, titulosYT[v.id]); });
-    if (Object.keys(titulosYT).length) desenhaGaleria();
-    const faltam = videos.filter(v => !v.marca && !titulosYT[v.id]);
-    if (faltam.length && "fetch" in window) {
-      Promise.all(faltam.map(v =>
-        fetch("https://noembed.com/embed?url=" + encodeURIComponent("https://www.youtube.com/watch?v=" + v.id))
-          .then(r => r.json())
-          .then(d => { if (d && d.title) { titulosYT[v.id] = d.title; aplicaTitulo(v, d.title); } })
-          .catch(() => {})
-      )).then(() => {
-        try { localStorage.setItem("titulosYT", JSON.stringify(titulosYT)); } catch (e) {}
-        desenhaGaleria();
-      });
-    }
+    const nichosComVideo = nichos.filter(n => doNicho(n.id).length);
+    filtros.innerHTML = nichosComVideo.map(n =>
+      `<button type="button" class="filtro${n.id === "black" ? " filtro-black" : ""}" data-nicho="${esc(n.id)}" aria-pressed="false">${esc(n.nome)} <span>${doNicho(n.id).length}</span></button>`).join("");
+    filtros.addEventListener("click", e => {
+      const botao = e.target.closest(".filtro");
+      if (botao) desenhaGaleria(botao.dataset.nicho);
+    });
+    if (nichosComVideo.length) desenhaGaleria(nichosComVideo[0].id);
 
     // Player do vídeo na própria página
     const fundoVideo = $("fundoVideo");
