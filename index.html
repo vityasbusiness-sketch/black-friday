@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Yasmin Caetano | Black Edition</title>
+  <meta name="description" content="Black Edition de Yasmin Caetano, UGC Creator: uma agenda reduzida de Black Friday para marcas que querem vender mais sem perder a elegância.">
+  <meta name="theme-color" content="#0d0b09">
+  <meta property="og:title" content="Yasmin Caetano | Black Edition">
+  <meta property="og:description" content="Agenda de Black Friday para marcas que querem vender com estratégia e estética.">
+  <meta property="og:image" content="fotos/capa-larga.webp">
+
+  <!-- Fontes: as mesmas do portfólio. Fraunces (títulos), Allura (assinatura) e Plus Jakarta Sans (texto). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============ CORES E MEDIDAS ============ */
+    :root {
+      /* Black Edition: o preto do moodboard vira a base, o bege vira texto e o dourado é o detalhe */
+      --noite: #0d0b09;          /* fundo geral */
+      --noite-2: #15110e;        /* seções alternadas */
+      --noite-3: #1d1813;        /* cards */
+      --vinho: #2a0308;          /* bordô profundo do portfólio, só em detalhes */
+      --ouro: #c8a45d;
+      --ouro-claro: #e6cf9a;
+      --ouro-escuro: #8f7238;
+      --bege: #e8dcc9;
+      --bege-suave: rgba(232, 220, 201, .72);
+      --bege-fraco: rgba(232, 220, 201, .5);
+      --linha: rgba(230, 207, 154, .16);
+      --linha-forte: rgba(230, 207, 154, .34);
+      --brilho-ouro: linear-gradient(115deg, #8f7238 0%, #e6cf9a 38%, #c8a45d 55%, #f3e3bb 70%, #8f7238 100%);
+      --textura: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
+      --serif: "Fraunces", Georgia, "Times New Roman", serif;
+      --sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --raio: 3px;
+      --raio-g: 6px;
+      --sombra: 0 1px 2px rgba(0, 0, 0, .3), 0 18px 40px -18px rgba(0, 0, 0, .7);
+      --largura: 1200px;
+      --gutter: clamp(16px, 4vw, 40px);
+      --topo: 64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--topo); -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--noite) var(--textura);
+      color: var(--bege);
+      font-family: var(--sans);
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      overflow-x: hidden;
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.05; margin: 0; letter-spacing: -.01em; font-optical-sizing: auto; }
+    h1 em, h2 em, h3 em { font-style: italic; color: var(--ouro-claro); }
+    p { margin: 0 0 1em; }
+    ::selection { background: var(--ouro); color: var(--noite); }
+    :focus-visible { outline: 2px solid var(--ouro-claro); outline-offset: 3px; border-radius: 3px; }
+
+    .pular { position: absolute; left: 12px; top: -60px; background: var(--ouro); color: var(--noite); padding: 10px 16px; border-radius: var(--raio); z-index: 200; text-decoration: none; }
+    .pular:focus { top: 12px; }
+
+    .container { width: 100%; max-width: var(--largura); margin: 0 auto; padding: 0 var(--gutter); }
+    section { padding: clamp(56px, 7vw, 96px) 0; }
+    .alterna { background: var(--noite-2) var(--textura); }
+
+    /* Brilho de quatro pontas (o ✦ do logo) */
+    .rotulo {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: .72rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase;
+      color: var(--ouro); margin-bottom: 14px;
+    }
+    .rotulo::before, .estrela {
+      content: ""; width: 11px; height: 11px; background: currentColor; flex: none;
+      clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+    }
+
+    .titulo-secao { font-size: clamp(2rem, 4.2vw, 3.3rem); max-width: 18ch; }
+    .cabeca-secao { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: clamp(28px, 4vw, 48px); }
+    .cabeca-secao .apoio { max-width: 42ch; color: var(--bege-suave); margin: 0; }
+
+    /* Fio dourado que separa as seções */
+    .fio { height: 1px; border: 0; margin: 0; background: linear-gradient(90deg, transparent, var(--ouro-escuro) 20%, var(--ouro-claro) 50%, var(--ouro-escuro) 80%, transparent); opacity: .55; }
+
+    /* ============ BOTÕES ============ */
+    .botao {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      font: 600 .92rem/1 var(--sans); letter-spacing: .05em; text-decoration: none; cursor: pointer;
+      min-height: 50px; padding: 16px 26px; border-radius: var(--raio); border: 1px solid var(--ouro);
+      transition: background .3s ease, color .3s ease, transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+    .botao-primario { background: var(--brilho-ouro); background-size: 200% 100%; background-position: 0 0; color: var(--noite); border-color: transparent; }
+    .botao-primario:hover { background-position: 100% 0; transform: translateY(-2px); box-shadow: 0 12px 30px -12px rgba(200, 164, 93, .55); }
+    .botao-secundario { background: transparent; color: var(--ouro-claro); border-color: var(--linha-forte); }
+    .botao-secundario:hover { border-color: var(--ouro); background: rgba(200, 164, 93, .08); transform: translateY(-2px); }
+
+    /* ============ MÍDIA ============ */
+    .midia { position: relative; overflow: hidden; border-radius: var(--raio-g); background: linear-gradient(160deg, #2a2219 0%, #15110e 70%); box-shadow: var(--sombra); }
+    .midia img { width: 100%; height: 100%; object-fit: cover; }
+    .play {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 58px; height: 58px; border-radius: 50%;
+      background: rgba(13, 11, 9, .55); border: 1px solid rgba(230, 207, 154, .7);
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+      display: grid; place-items: center; transition: transform .4s ease, background .4s ease;
+    }
+    .play svg { width: 18px; height: 18px; margin-left: 3px; fill: var(--ouro-claro); transition: fill .4s ease; }
+
+    /* ============ MENU FIXO ============ */
+    .menu {
+      position: fixed; inset: 0 0 auto 0; z-index: 100; height: var(--topo);
+      background: rgba(13, 11, 9, .82);
+      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent; transition: border-color .3s ease;
+    }
+    .menu.rolou { border-bottom-color: var(--linha); }
+    .menu .container { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { font-family: var(--serif); font-size: 1.25rem; text-decoration: none; white-space: nowrap; }
+    .logo em { color: var(--ouro-claro); }
+    .logo small { font-family: var(--sans); font-size: .62rem; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--ouro); margin-left: 10px; vertical-align: middle; }
+    .menu nav ul { list-style: none; display: flex; gap: clamp(16px, 2.4vw, 32px); margin: 0; padding: 0; }
+    .menu nav a { text-decoration: none; font-size: .88rem; font-weight: 500; color: var(--bege-suave); position: relative; padding: 6px 0; transition: color .3s ease; }
+    .menu nav a:hover { color: var(--ouro-claro); }
+    .menu .botao { min-height: 40px; padding: 10px 18px; font-size: .82rem; }
+
+    /* ============ 1. CAPA ============ */
+    .capa { position: relative; isolation: isolate; overflow: hidden; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; padding: calc(var(--topo) + 40px) 0 56px; }
+    .capa-fundo { display: block; position: absolute; inset: 0; z-index: -1; }
+    .capa-fundo img { width: 100%; height: 100%; object-fit: cover; object-position: 0% 60%; filter: saturate(.85) brightness(.82); }
+    /* Escurece do lado do texto, pra o dourado brilhar sem brigar com a foto */
+    .capa-fundo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13, 11, 9, 0) 20%, rgba(13, 11, 9, .7) 52%, rgba(13, 11, 9, .94) 75%), linear-gradient(0deg, var(--noite) 0%, rgba(13, 11, 9, 0) 28%); }
+    .capa-conteudo { display: flex; justify-content: flex-end; }
+    .capa-texto { max-width: min(560px, 52%); }
+    .selo-black { display: inline-flex; align-items: center; gap: 12px; padding: 8px 16px 8px 12px; border: 1px solid var(--linha-forte); border-radius: 999px; font-size: .7rem; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--ouro-claro); background: rgba(13, 11, 9, .45); margin-bottom: 22px; }
+    .selo-black .estrela { width: 10px; height: 10px; color: var(--ouro); }
+    .nome-capa { font-size: clamp(3.2rem, min(8.6vw, 15vh), 8.4rem); line-height: 1; margin: 0 0 4px; }
+    .nome-capa .nome-1 { display: block; font-family: var(--serif); font-weight: 600; text-transform: uppercase; line-height: .82; letter-spacing: .01em; color: var(--bege); font-variation-settings: "opsz" 18, "SOFT" 50, "WONK" 0; }
+    .nome-capa .nome-2 {
+      display: block; font-family: "Allura", "Fraunces", cursive; font-weight: 400; line-height: 1; font-size: .64em;
+      margin: -.36em 0 0 1.6em; position: relative;
+      background: var(--brilho-ouro); -webkit-background-clip: text; background-clip: text; color: transparent;
+      padding: 0 .1em .08em 0;
+    }
+    .posicionamento { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(1.3rem, 2.1vw, 1.75rem); line-height: 1.3; color: var(--bege); margin: 26px 0 14px; max-width: 26ch; }
+    .capa .frase { color: var(--bege-suave); max-width: 40ch; margin: 0 0 28px; }
+    .acoes { display: flex; flex-wrap: wrap; gap: 12px; }
+    .resumo-oferta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 30px 0 0; padding: 16px 0 0; border-top: 1px solid var(--linha); list-style: none; font-size: .82rem; color: var(--bege-suave); }
+    .resumo-oferta li { display: flex; align-items: center; gap: 8px; }
+    .resumo-oferta b { color: var(--ouro-claro); font-weight: 600; }
+    .resumo-oferta li[hidden] { display: none; }
+
+    /* ============ 2. OFERTA ============ */
+    .oferta-grade { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+    .oferta-texto .titulo-secao { margin-bottom: 22px; }
+    .oferta-texto p { color: var(--bege-suave); max-width: 46ch; }
+    .cartao-oferta {
+      position: relative; border-radius: var(--raio-g); padding: clamp(28px, 4vw, 44px);
+      background: radial-gradient(120% 90% at 100% 0%, rgba(200, 164, 93, .16) 0%, rgba(42, 3, 8, .55) 45%, var(--noite-3) 100%);
+      border: 1px solid var(--linha-forte); box-shadow: var(--sombra);
+    }
+    /* Cantoneiras douradas, como num convite */
+    .cartao-oferta::before, .cartao-oferta::after { content: ""; position: absolute; width: 26px; height: 26px; border-color: var(--ouro); border-style: solid; }
+    .cartao-oferta::before { top: 10px; left: 10px; border-width: 1px 0 0 1px; }
+    .cartao-oferta::after { bottom: 10px; right: 10px; border-width: 0 1px 1px 0; }
+    .cartao-oferta .nome-pacote { font-size: .74rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--ouro); margin: 0 0 10px; }
+    .cartao-oferta h3 { font-size: clamp(1.8rem, 3.2vw, 2.5rem); line-height: 1.1; margin-bottom: 10px; }
+    .cartao-oferta .condicao { color: var(--bege-suave); margin-bottom: 22px; }
+    .itens-oferta { list-style: none; margin: 0 0 22px; padding: 0; border-top: 1px solid var(--linha); }
+    .itens-oferta li { position: relative; padding: 11px 0 11px 24px; border-bottom: 1px solid var(--linha); font-size: .95rem; }
+    .itens-oferta li::before { content: ""; position: absolute; left: 2px; top: 19px; width: 9px; height: 9px; background: var(--ouro); clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%); }
+    .itens-oferta li.bonus { color: var(--ouro-claro); }
+    .itens-oferta li.bonus b { font-size: .66rem; letter-spacing: .2em; text-transform: uppercase; border: 1px solid var(--linha-forte); border-radius: 999px; padding: 3px 8px; margin-right: 8px; vertical-align: 1px; }
+    .preco-oferta { font-family: var(--serif); font-size: clamp(2rem, 3.4vw, 2.6rem); line-height: 1; margin: 0 0 6px; color: var(--bege); }
+    .preco-oferta s { font-size: .5em; color: var(--bege-fraco); margin-right: 10px; }
+    .detalhes-oferta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 22px 0; }
+    .detalhes-oferta div { padding: 12px 14px; border: 1px solid var(--linha); border-radius: var(--raio); background: rgba(13, 11, 9, .35); }
+    .detalhes-oferta dt { font-size: .66rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--bege-fraco); }
+    .detalhes-oferta dd { margin: 4px 0 0; font-family: var(--serif); font-size: 1.2rem; color: var(--ouro-claro); line-height: 1.2; }
+    .cartao-oferta .botao { width: 100%; }
+    .nota-oferta { font-size: .8rem; color: var(--bege-fraco); margin: 12px 0 0; text-align: center; }
+
+    .por-que { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--linha); }
+    .por-que li { display: grid; grid-template-columns: 40px 1fr; gap: 10px; padding: 14px 0; border-bottom: 1px solid var(--linha); }
+    .por-que b { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--ouro); }
+    .por-que span { font-size: .95rem; color: var(--bege); }
+
+    /* ============ 3. CASE ============ */
+    .case { display: grid; grid-template-columns: minmax(0, 300px) 1fr; gap: clamp(36px, 6vw, 90px); align-items: center; }
+    .case-video { border: 0; padding: 0; background: none; cursor: pointer; width: 100%; text-align: left; display: block; color: inherit; }
+    .case-video .midia { aspect-ratio: 9 / 16; outline: 1px solid var(--linha-forte); outline-offset: 10px; transition: transform .5s ease; }
+    .case-video:hover .midia { transform: translateY(-6px); }
+    .case-video:hover .play, .abre-video:hover .play { background: var(--ouro); transform: translate(-50%, -50%) scale(1.06); }
+    .case-video:hover .play svg, .abre-video:hover .play svg { fill: var(--noite); }
+    .case-marca { display: block; width: fit-content; font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ouro-claro); border: 1px solid var(--linha-forte); border-radius: 999px; padding: 7px 14px; margin: 18px 0 22px; }
+    .case-texto > p { color: var(--bege-suave); max-width: 58ch; }
+    .case-numeros { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 24px 0; }
+    .case-numeros div { display: flex; flex-direction: column-reverse; justify-content: flex-end; padding: 14px 16px; border: 1px solid var(--linha); border-radius: var(--raio); background: var(--noite-3); }
+    .case-numeros div:first-child { border-color: var(--ouro-escuro); background: linear-gradient(160deg, rgba(200, 164, 93, .14), var(--noite-3)); }
+    .case-numeros dd { margin: 0; font-family: var(--serif); font-size: clamp(1.4rem, 2.2vw, 1.9rem); line-height: 1.05; color: var(--ouro-claro); white-space: nowrap; }
+    .case-numeros dt { margin-top: 6px; font-size: .8rem; color: var(--bege-fraco); }
+    .case-conclusao { margin: 0; padding: 14px 18px; border: 1px solid var(--linha); border-left: 2px solid var(--ouro); border-radius: var(--raio); font-size: .95rem; color: var(--bege-suave); }
+    .case-conclusao b { color: var(--bege); }
+
+    /* ============ 4. SELEÇÃO DE VÍDEOS ============ */
+    .galeria { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 2vw, 24px); list-style: none; margin: 0; padding: 0; }
+    .abre-video { display: block; width: 100%; padding: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+    .abre-video .midia { aspect-ratio: 3 / 4; transition: transform .5s ease; }
+    .abre-video:hover .midia { transform: scale(.98); }
+    .abre-video .midia img { position: absolute; inset: 0; }
+    .trabalho .info { display: flex; flex-direction: column; gap: 2px; margin-top: 12px; }
+    .trabalho h3 { font-size: 1.15rem; }
+    .trabalho .formato { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ouro); font-weight: 600; }
+
+    /* ============ 5. FOTOS ============ */
+    .fotos-trilho {
+      display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 48px) / 4); column-gap: 16px;
+      list-style: none; margin: 0; padding: 0 0 4px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain;
+    }
+    .fotos-trilho::-webkit-scrollbar { display: none; }
+    .fotos-trilho li { scroll-snap-align: start; }
+    .fotos-trilho .midia { aspect-ratio: 3 / 4; }
+    .setas { display: flex; gap: 10px; justify-content: flex-end; margin-top: 18px; }
+    .seta { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--linha-forte); background: transparent; color: var(--ouro-claro); font-size: 1.1rem; cursor: pointer; transition: background .3s ease, color .3s ease; }
+    .seta:hover { background: var(--ouro); color: var(--noite); }
+
+    /* ============ 6. COMO FUNCIONA ============ */
+    .etapas { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; list-style: none; margin: 0; padding: 0; }
+    .etapas::before { content: ""; position: absolute; top: 19px; left: 10%; right: 10%; height: 1px; background: var(--linha-forte); }
+    .etapa { position: relative; text-align: center; }
+    .etapa .bolinha { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; margin: 0 auto 14px; background: var(--noite); border: 1px solid var(--ouro); color: var(--ouro-claro); font-family: var(--serif); font-style: italic; font-size: .95rem; }
+    .etapa h3 { font-size: 1.2rem; margin-bottom: 4px; }
+    .etapa p { margin: 0; font-size: .88rem; line-height: 1.5; color: var(--bege-suave); }
+
+    /* ============ 7. DEPOIMENTOS ============ */
+    .depoimentos {
+      display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 40px) / 3);
+      gap: 20px; list-style: none; margin: 0; padding: 0 0 4px;
+      overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain;
+    }
+    .depoimentos::-webkit-scrollbar { display: none; }
+    .depoimentos li { display: flex; scroll-snap-align: start; }
+    .depoimento { flex: 1; display: flex; flex-direction: column; margin: 0; padding: clamp(22px, 2.6vw, 30px); border: 1px solid var(--linha); border-radius: var(--raio-g); background: var(--noite-3); }
+    .depoimento blockquote { flex: 1; margin: 0 0 18px; font-family: var(--serif); font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.5; font-weight: 300; }
+    .depoimento blockquote::before { content: "\201C"; display: block; font-size: 2.4rem; line-height: .6; color: var(--ouro); margin-bottom: 6px; font-style: italic; }
+    .depoimento figcaption { font-size: .9rem; }
+    .depoimento figcaption b { display: block; font-weight: 600; }
+    .depoimento figcaption span { color: var(--bege-fraco); font-size: .82rem; }
+
+    /* ============ 8. CONTATO ============ */
+    .contato { position: relative; text-align: center; background: radial-gradient(80% 70% at 50% 0%, rgba(200, 164, 93, .14) 0%, rgba(42, 3, 8, .4) 45%, var(--noite) 100%); }
+    .contato .titulo-secao { margin: 0 auto 16px; max-width: 20ch; }
+    .contato .rotulo { justify-content: center; }
+    .contato-texto { max-width: 46ch; margin: 0 auto; color: var(--bege-suave); }
+    .canais { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 760px; margin: 32px auto 0; }
+    .canal {
+      display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none;
+      padding: 18px 16px; border: 1px solid var(--linha-forte); border-radius: var(--raio);
+      transition: background .3s ease, color .3s ease, border-color .3s ease;
+    }
+    .canal:hover { background: rgba(200, 164, 93, .1); border-color: var(--ouro); }
+    .canal span { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ouro); font-weight: 600; }
+    .canal b { font-weight: 500; overflow-wrap: anywhere; }
+    .canal.principal { background: var(--brilho-ouro); background-size: 200% 100%; color: var(--noite); border-color: transparent; }
+    .canal.principal span { color: rgba(13, 11, 9, .7); }
+    .canal.principal:hover { background-position: 100% 0; }
+
+    /* ============ RODAPÉ ============ */
+    .rodape { padding: 40px 0 calc(40px + env(safe-area-inset-bottom)); border-top: 1px solid var(--linha); }
+    .rodape .container { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; }
+    .monograma { position: relative; display: inline-flex; font-family: var(--serif); font-weight: 300; font-size: 2.8rem; line-height: 1; padding-right: .25em; color: var(--ouro-claro); }
+    .monograma span { display: inline-block; margin-left: -.3em; transform: translateY(.24em); }
+    .monograma i { position: absolute; right: 0; bottom: .02em; width: .24em; height: .24em; background: currentColor; clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%); }
+    .assinatura-rodape { display: flex; align-items: center; gap: 18px; }
+    .assinatura-rodape .lema { margin: 2px 0 0; font-family: var(--serif); font-style: italic; color: var(--bege-fraco); }
+    .rodape .copia { width: 100%; padding-top: 18px; border-top: 1px solid var(--linha); font-size: .8rem; color: var(--bege-fraco); margin: 0; }
+    .rodape .copia a { color: var(--ouro-claro); }
+
+    /* ============ BARRA FIXA NO CELULAR ============ */
+    .barra-zap { display: none; }
+
+    /* ============ PLAYER DE VÍDEO ============ */
+    .fundo-modal {
+      position: fixed; inset: 0; z-index: 300; background: rgba(5, 4, 3, .86);
+      display: grid; place-items: center; padding: 16px;
+      opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s ease;
+    }
+    .fundo-modal.aberto { opacity: 1; visibility: visible; }
+    .card-video-player { position: relative; width: min(92vw, calc((100vh - 120px) * 9 / 16), 420px); }
+    .moldura-video { position: relative; aspect-ratio: 9 / 16; background: #000; border-radius: var(--raio-g); overflow: hidden; outline: 1px solid var(--linha-forte); outline-offset: 6px; }
+    .moldura-video iframe { position: absolute; left: 0; top: -60px; width: 100%; height: calc(100% + 120px); border: 0; display: block; pointer-events: none; }
+    .toque-video { position: absolute; inset: 0; z-index: 2; width: 100%; border: 0; background: transparent; cursor: pointer; }
+    .toque-video .icone-pausa { position: absolute; top: 50%; left: 50%; width: 68px; height: 68px; margin: -34px 0 0 -34px; border-radius: 50%; background: rgba(13, 11, 9, .6); border: 1px solid var(--ouro); display: grid; place-items: center; opacity: 0; transition: opacity .25s ease; }
+    .toque-video .icone-pausa svg { width: 20px; height: 20px; margin-left: 4px; fill: var(--ouro-claro); }
+    .moldura-video.pausado .icone-pausa { opacity: 1; }
+    .moldura-video.pausado iframe { filter: brightness(.6); }
+    .botao-som { position: absolute; z-index: 3; left: 12px; bottom: 12px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--linha-forte); background: rgba(13, 11, 9, .6); color: var(--ouro-claro); font: 600 .76rem/1 var(--sans); letter-spacing: .06em; cursor: pointer; }
+    .fechar { position: absolute; top: -54px; right: 0; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--linha-forte); background: var(--noite); cursor: pointer; font-size: 1.3rem; line-height: 1; color: var(--ouro-claro); }
+
+    /* ============ ANIMAÇÃO DE ENTRADA ============ */
+    .js .revelar { opacity: 0; transform: translateY(24px); transition: opacity .9s ease, transform .9s ease; }
+    .js .revelar.visivel { opacity: 1; transform: none; }
+
+    /* ============ RESPONSIVO ============ */
+    /* Capa: abaixo de 1100px a foto vai pra cima e o texto desce pro preto, pra não cobrir o rosto */
+    @media (max-width: 1100px) {
+      .capa { display: block; min-height: 0; padding: var(--topo) 0 36px; }
+      .capa-fundo { position: relative; inset: auto; height: 96vw; max-height: 520px; }
+      .capa-fundo img { object-position: 50% 25%; }
+      .capa-fundo::after { background: linear-gradient(0deg, var(--noite) 0%, rgba(13, 11, 9, .35) 40%, rgba(13, 11, 9, 0) 70%); }
+      .capa-conteudo { display: block; margin-top: -64px; position: relative; }
+      .capa-texto { max-width: 620px; }
+    }
+
+    @media (max-width: 980px) {
+      .oferta-grade { grid-template-columns: 1fr; }
+      .galeria { grid-template-columns: repeat(3, 1fr); }
+      .fotos-trilho { grid-auto-columns: calc((100% - 16px) / 2); }
+      .depoimentos { grid-auto-columns: calc((100% - 20px) / 2); }
+      .etapas { grid-template-columns: 1fr; gap: 0; }
+      .etapas::before { left: 18px; right: auto; top: 0; bottom: 0; width: 1px; height: auto; }
+      .etapa { display: grid; grid-template-columns: 38px 1fr; column-gap: 16px; padding: 0 0 20px; text-align: left; }
+      .etapa .bolinha { grid-row: span 2; margin: 0; }
+    }
+
+    @media (max-width: 860px) {
+      .menu nav { display: none; }
+    }
+
+    /* Celular: é por aqui que as marcas chegam, pelo link da bio */
+    @media (max-width: 760px) {
+      body { font-size: 1rem; padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+      :root { --topo: 56px; }
+      .logo { font-size: 1.1rem; }
+      .menu .botao { display: none; }
+      section { padding: 44px 0; }
+      .titulo-secao { font-size: 1.85rem; line-height: 1.12; }
+      .cabeca-secao { margin-bottom: 22px; gap: 10px; }
+      .cabeca-secao .apoio { font-size: .92rem; }
+
+      .selo-black { font-size: .6rem; letter-spacing: .22em; margin-bottom: 14px; }
+      .nome-capa { font-size: clamp(3rem, 15vw, 4.4rem); }
+      .posicionamento { font-size: 1.3rem; margin-top: 18px; }
+      .capa .frase { font-size: .95rem; margin-bottom: 22px; }
+      .acoes .botao { flex: 1 1 100%; }
+      .resumo-oferta { font-size: .78rem; gap: 6px 16px; }
+
+      .cartao-oferta { padding: 26px 20px; }
+      .detalhes-oferta dd { font-size: 1.05rem; }
+
+      /* Case: vídeo pequeno ao lado do título */
+      .case { grid-template-columns: 40% minmax(0, 1fr); column-gap: 18px; row-gap: 0; align-items: center; }
+      .case-video { grid-column: 1; grid-row: 1; }
+      .case-video .midia { outline-offset: 5px; }
+      .case-video .play { width: 46px; height: 46px; }
+      .case-texto { display: contents; }
+      .case-texto .rotulo, .case-texto .titulo-secao, .case-texto .case-marca { grid-column: 2; grid-row: 1; }
+      .case-texto .rotulo { align-self: start; margin-top: 8px; font-size: .58rem; letter-spacing: .16em; }
+      .case-texto .titulo-secao { align-self: center; font-size: 1.4rem; }
+      .case-texto .case-marca { align-self: end; margin: 0 0 6px; font-size: .56rem; padding: 6px 10px; }
+      .case-texto > p:not(.rotulo):not(.case-marca), .case-numeros, .case-conclusao { grid-column: 1 / -1; }
+      .case-texto > p.descricao { margin-top: 26px; font-size: .92rem; }
+      .case-numeros { gap: 6px; margin: 16px 0 14px; }
+      .case-numeros div { padding: 10px; }
+      .case-numeros dd { font-size: 1.08rem; }
+      .case-numeros dt { font-size: .66rem; line-height: 1.3; }
+      .case-conclusao { font-size: .86rem; }
+
+      .galeria { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .trabalho h3 { font-size: .95rem; }
+      .trabalho .formato { font-size: .6rem; letter-spacing: .08em; }
+      .abre-video .play { width: 40px; height: 40px; }
+      .abre-video .play svg { width: 14px; height: 14px; }
+
+      .fotos-trilho { grid-auto-columns: 62%; column-gap: 12px; }
+      .depoimentos { grid-auto-columns: 86%; gap: 12px; }
+      .depoimento blockquote { font-size: .98rem; }
+
+      .canais { grid-template-columns: 1fr; }
+      .canal { flex-direction: row; justify-content: space-between; padding: 15px 18px; }
+      .rodape .container { flex-direction: column; align-items: flex-start; }
+
+      /* Botão fixo de WhatsApp, sempre a um toque do polegar */
+      .barra-zap {
+        display: flex; gap: 10px; align-items: center; position: fixed; z-index: 90; left: 0; right: 0; bottom: 0;
+        padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
+        background: rgba(13, 11, 9, .92); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+        border-top: 1px solid var(--linha);
+        transform: translateY(110%); transition: transform .4s ease;
+      }
+      .barra-zap.visivel { transform: none; }
+      .barra-zap p { margin: 0; font-size: .74rem; line-height: 1.35; color: var(--bege-suave); flex: 1; }
+      .barra-zap p b { display: block; color: var(--ouro-claro); font-weight: 600; letter-spacing: .04em; }
+      .barra-zap .botao { min-height: 46px; padding: 12px 18px; font-size: .84rem; flex: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .js .revelar { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============ MENU FIXO ============ -->
+  <header class="menu" id="menu">
+    <div class="container">
+      <a class="logo" href="#topo">Yasmin <em>Caetano</em><small>Black</small></a>
+      <nav aria-label="Navegação principal">
+        <ul>
+          <li><a href="#oferta">A oferta</a></li>
+          <li><a href="#case">Case</a></li>
+          <li><a href="#selecao">Vídeos</a></li>
+          <li><a href="#como">Como funciona</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <a class="botao botao-primario" href="#" data-zap="geral" target="_blank" rel="noopener">Reservar vaga</a>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ============ 1. CAPA ============ -->
+    <section class="capa" id="topo" aria-labelledby="titulo-capa">
+      <picture class="capa-fundo">
+        <source media="(max-width: 760px)" srcset="fotos/capa-celular.webp">
+        <img src="fotos/capa-larga.webp" alt="Yasmin Caetano à noite em um restaurante com jardim, com um drink de frutas vermelhas na mesa" width="2600" height="1150" fetchpriority="high">
+      </picture>
+
+      <div class="container capa-conteudo">
+        <div class="capa-texto revelar">
+          <p class="selo-black"><span class="estrela" aria-hidden="true"></span><span id="seloAno">Black Edition</span></p>
+          <h1 id="titulo-capa" class="nome-capa"><span class="nome-1">Yasmin</span> <span class="nome-2">Caetano</span></h1>
+          <!-- O posicionamento vem de OFERTA.posicionamento, no script -->
+          <p class="posicionamento" id="posicionamento"></p>
+          <p class="frase">UGC com roteiro estratégico e estética de campanha, pra sua marca chegar na Black Friday com conteúdo que gera desejo, e não só desconto.</p>
+          <div class="acoes">
+            <a class="botao botao-primario" href="#" data-zap="geral" target="_blank" rel="noopener">Reservar minha vaga</a>
+            <a class="botao botao-secundario" href="#oferta">Ver a oferta</a>
+          </div>
+          <ul class="resumo-oferta" id="resumoOferta">
+            <li id="resumoVagas"><span class="estrela" aria-hidden="true" style="width:8px;height:8px;color:var(--ouro)"></span><span></span></li>
+            <li id="resumoValidade"><span class="estrela" aria-hidden="true" style="width:8px;height:8px;color:var(--ouro)"></span><span></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="fio">
+
+    <!-- ============ 2. OFERTA ============ -->
+    <section class="alterna" id="oferta" aria-labelledby="titulo-oferta">
+      <div class="container oferta-grade">
+        <div class="oferta-texto revelar">
+          <p class="rotulo">Black Edition</p>
+          <h2 class="titulo-secao" id="titulo-oferta">Uma agenda <em>reduzida</em>, pensada pra quem planeja.</h2>
+          <p>A Black é a data em que a sua cliente mais compara. Ela já viu o desconto em todo lugar; o que faz ela escolher a sua marca é se reconhecer no conteúdo.</p>
+          <p>Por isso, nesta temporada, abro poucas vagas e entrego cada campanha com o mesmo cuidado de sempre: roteiro, cenário e narrativa feitos pra converter.</p>
+          <ul class="por-que">
+            <li><b>01</b><span>Roteiro aprovado por você antes de gravar</span></li>
+            <li><b>02</b><span>Criativos prontos pra anúncio, no ritmo da data</span></li>
+            <li><b>03</b><span>Entrega organizada, sem correria de última hora</span></li>
+          </ul>
+        </div>
+
+        <!-- O conteúdo do cartão vem de OFERTA, no script -->
+        <article class="cartao-oferta revelar" aria-labelledby="nomeOferta">
+          <p class="nome-pacote" id="nomePacote"></p>
+          <h3 id="nomeOferta"></h3>
+          <p class="condicao" id="condicaoOferta"></p>
+          <ul class="itens-oferta" id="itensOferta"></ul>
+          <p class="preco-oferta" id="precoOferta"></p>
+          <dl class="detalhes-oferta" id="detalhesOferta"></dl>
+          <a class="botao botao-primario" href="#" data-zap="oferta" target="_blank" rel="noopener">Quero garantir minha vaga</a>
+          <p class="nota-oferta" id="notaOferta"></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 3. CASE DE DESTAQUE ============ -->
+    <section id="case" aria-labelledby="titulo-case">
+      <div class="container">
+        <div class="case">
+          <button type="button" class="case-video revelar" id="abreDestaque" aria-label="Assistir ao vídeo feito para o Bombado">
+            <div class="midia" id="capaDestaque">
+              <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
+            </div>
+          </button>
+
+          <div class="case-texto revelar">
+            <p class="rotulo">Case de destaque</p>
+            <h2 class="titulo-secao" id="titulo-case">Um vídeo que <em>performou</em> no tráfego pago.</h2>
+            <p class="case-marca">Bombado · Gastronomia</p>
+            <p class="descricao">Uma experiência gastronômica que virou alcance, interação e crescimento. A marca usou o conteúdo no tráfego pago, e ele gerou muito mais do que visualizações: gerou novas conexões com a marca.</p>
+            <dl class="case-numeros">
+              <div><dt>visualizações</dt><dd>70.900</dd></div>
+              <div><dt>pessoas alcançadas</dt><dd>33.505</dd></div>
+              <div><dt>interações</dt><dd>2.281</dd></div>
+              <div><dt>novos seguidores</dt><dd>1.891</dd></div>
+              <div><dt>por visita ao perfil</dt><dd>R$ 0,10</dd></div>
+              <div><dt>de investimento total</dt><dd>R$ 359,27</dd></div>
+            </dl>
+            <p class="case-conclusao"><b>O que isso significa na Black:</b> conteúdo que parece experiência real custa menos pra performar, justamente na data em que o anúncio fica mais caro.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="fio">
+
+    <!-- ============ 4. SELEÇÃO DE VÍDEOS ============ -->
+    <section class="alterna" id="selecao" aria-labelledby="titulo-selecao">
+      <div class="container">
+        <div class="cabeca-secao revelar">
+          <div>
+            <p class="rotulo">Seleção</p>
+            <h2 class="titulo-secao" id="titulo-selecao">Linguagem de <em>campanha</em>, em cada nicho.</h2>
+          </div>
+          <p class="apoio">Beleza, moda, gastronomia e tecnologia. Toque em um vídeo pra assistir aqui mesmo.</p>
+        </div>
+        <ul class="galeria" id="galeria"></ul>
+      </div>
+    </section>
+
+    <!-- ============ 5. FOTOS ============ -->
+    <section id="fotos" aria-labelledby="titulo-fotos">
+      <div class="container">
+        <div class="cabeca-secao revelar">
+          <div>
+            <p class="rotulo">Fotos UGC</p>
+            <h2 class="titulo-secao" id="titulo-fotos">Imagem que dá <em>vontade</em> de ter.</h2>
+          </div>
+          <p class="apoio">Pra vitrine do site, anúncio e redes: luz, textura e cenário pensados pro seu produto.</p>
+        </div>
+        <div class="revelar">
+          <ul class="fotos-trilho" id="listaFotos" tabindex="0" aria-label="Fotos UGC, use as setas para ver mais"></ul>
+          <div class="setas">
+            <button class="seta" id="fotoAnterior" type="button" aria-label="Foto anterior">←</button>
+            <button class="seta" id="fotoProxima" type="button" aria-label="Próxima foto">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="fio">
+
+    <!-- ============ 6. COMO FUNCIONA ============ -->
+    <section class="alterna" id="como" aria-labelledby="titulo-como">
+      <div class="container">
+        <div class="cabeca-secao revelar">
+          <div>
+            <p class="rotulo">Como funciona</p>
+            <h2 class="titulo-secao" id="titulo-como">Do sim ao criativo <em>no ar</em>.</h2>
+          </div>
+          <p class="apoio">Um processo fixo, pra você saber o que acontece em cada etapa e chegar na data com tudo pronto.</p>
+        </div>
+        <ol class="etapas revelar" id="listaEtapas"></ol>
+      </div>
+    </section>
+
+    <!-- ============ 7. DEPOIMENTOS ============ -->
+    <section id="depoimentos" aria-labelledby="titulo-depoimentos">
+      <div class="container">
+        <div class="cabeca-secao revelar">
+          <div>
+            <p class="rotulo">Quem já criou comigo</p>
+            <h2 class="titulo-secao" id="titulo-depoimentos">Marcas que <em>voltariam</em>.</h2>
+          </div>
+        </div>
+        <ul class="depoimentos revelar" id="listaDepoimentos" tabindex="0" aria-label="Depoimentos de clientes, role para o lado para ver mais"></ul>
+      </div>
+    </section>
+
+    <!-- ============ 8. CONTATO ============ -->
+    <section class="contato" id="contato" aria-labelledby="titulo-contato">
+      <div class="container revelar">
+        <p class="rotulo">Reserve sua vaga</p>
+        <h2 class="titulo-secao" id="titulo-contato">Vamos pensar a sua Black <em>juntas</em>?</h2>
+        <p class="contato-texto">Me conta qual produto você quer destacar e quando a campanha vai ao ar. Eu te respondo com uma ideia de roteiro e os próximos passos.</p>
+        <div class="canais">
+          <a class="canal principal" href="#" data-zap="geral" target="_blank" rel="noopener"><span>WhatsApp</span><b>Chamar agora</b></a>
+          <a class="canal" href="https://instagram.com/caetyas_" target="_blank" rel="noopener"><span>Instagram</span><b>@caetyas_</b></a>
+          <a class="canal" href="mailto:vityasbusiness@gmail.com?subject=Black%20Edition"><span>E-mail</span><b>vityasbusiness@gmail.com</b></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <div class="assinatura-rodape">
+        <span class="monograma" aria-hidden="true">Y<span>C</span><i></i></span>
+        <div>
+          <a class="logo" href="#topo">Yasmin <em>Caetano</em></a>
+          <p class="lema">estética que comunica e converte</p>
+        </div>
+      </div>
+      <p class="copia">© <span id="ano"></span> Yasmin Caetano · UGC Creator · Black Edition. Fotos, vídeos, textos e design não podem ser reproduzidos sem autorização.</p>
+    </div>
+  </footer>
+
+  <!-- Barra fixa do celular: aparece depois que a pessoa passa da capa -->
+  <div class="barra-zap" id="barraZap">
+    <p><b>Black Edition</b><span id="barraTexto"></span></p>
+    <a class="botao botao-primario" href="#" data-zap="geral" target="_blank" rel="noopener">Reservar vaga</a>
+  </div>
+
+  <!-- ============ PLAYER DE VÍDEO ============ -->
+  <div class="fundo-modal" id="fundoVideo" aria-hidden="true">
+    <div class="card-video-player" role="dialog" aria-modal="true" aria-label="Vídeo">
+      <button class="fechar" id="fecharVideo" type="button" aria-label="Fechar vídeo">×</button>
+      <div class="moldura-video" id="molduraVideo"></div>
+    </div>
+  </div>
+
+  <script>
+    /* =====================================================================
+       SEUS DADOS: edite aqui, sem mexer no HTML.
+       Qualquer campo deixado "" simplesmente não aparece no site.
+       ===================================================================== */
+
+    const OFERTA = {
+      // Frase de posicionamento que aparece no topo, em itálico
+      posicionamento: "Para marcas que querem vender mais nesta Black, sem abrir mão da elegância.",
+      // Nome curto do pacote (aparece em letras pequenas, em dourado)
+      pacote: "Pacote Black Edition",
+      // Título do cartão da oferta
+      titulo: "Criativos de campanha pra sua Black",
+      // Condição especial, em uma frase
+      condicao: "Uma condição exclusiva desta temporada, pra você testar mais criativos sem aumentar o orçamento.",
+      // O que está incluso. Os itens com bonus: true ganham a etiqueta "Bônus"
+      itens: [
+        { texto: "3 vídeos criativos com roteiro estratégico" },
+        { texto: "6 fotos profissionais" },
+        { texto: "90 dias de direito de uso em anúncios" },
+        { texto: "Uso vitalício nas redes sociais" },
+        { texto: "1 vídeo extra no formato de oferta", bonus: true }
+      ],
+      // Preço. precoDe aparece riscado; deixe "" pra não mostrar
+      precoDe: "",
+      preco: "",
+      // Datas e vagas
+      validade: "28 de novembro",
+      vagas: "5 marcas",
+      // Texto pequeno embaixo do botão
+      nota: "Reservas por ordem de confirmação."
+    };
+
+    // WhatsApp: não aparece escrito no site, só abre quando a marca clica num botão
+    const WHATSAPP = "5581989857308";
+    const MENSAGENS = {
+      geral: "Oi, Yasmin! Vi sua Black Edition e quero conversar sobre uma campanha. Minha marca é ",
+      oferta: "Oi, Yasmin! Quero garantir uma vaga no Pacote Black Edition. Minha marca é "
+    };
+
+    // Vídeo do case (YouTube Shorts: o código que vem depois de "shorts/" no link)
+    const VIDEO_DESTAQUE = "GMK9yJPUJbk";
+
+    // Seleção de vídeos. O nome da marca e o formato vêm do título do YouTube ("Marca • Formato").
+    // Para trocar, mude o id. Para escrever na mão, preencha marca e formato.
+    const videos = [
+      { id: "pvpWG6x2ucA", nicho: "Skincare", marca: "", formato: "" },
+      { id: "SpHDfJ-BWOk", nicho: "Makeup", marca: "", formato: "" },
+      { id: "mwWG5L3VRW4", nicho: "Haircare", marca: "", formato: "" },
+      { id: "mYr7VDvsxYo", nicho: "Bodycare", marca: "", formato: "" },
+      { id: "xZuFjGpek0M", nicho: "Moda", marca: "", formato: "" },
+      { id: "eQKGJGUUxA8", nicho: "Acessórios", marca: "", formato: "" },
+      { id: "KHrjhYwHz_w", nicho: "Gastronomia", marca: "", formato: "" },
+      { id: "HNMgo5j_ONY", nicho: "Tecnologia", marca: "", formato: "" }
+    ];
+
+    const fotosUgc = [
+      { src: "fotos/ugc/ugc-01.webp", alt: "Yasmin segurando o spray DivaBlue perto do rosto, com maquiagem azul" },
+      { src: "fotos/ugc/ugc-02.webp", alt: "Produtos CBSkin sobre bolsa de crochê com óculos de sol" },
+      { src: "fotos/ugc/ugc-03.webp", alt: "Yasmin de óculos escuros mostrando o bastão Ollie na piscina" },
+      { src: "fotos/ugc/ugc-04.webp", alt: "Produtos de cabelo Thermal Sealing entre folhas e madeira" },
+      { src: "fotos/ugc/ugc-05.webp", alt: "Yasmin sorrindo e mostrando sandálias pretas sob o guarda-sol" },
+      { src: "fotos/ugc/ugc-06.webp", alt: "Hidratante Fruta Branca sendo aplicado na praia" },
+      { src: "fotos/ugc/ugc-07.webp", alt: "Yasmin posando com look claro e sandália branca" },
+      { src: "fotos/ugc/ugc-09.webp", alt: "Yasmin segurando sandálias de tiras entre plantas" }
+    ];
+
+    const etapas = [
+      { titulo: "Reserva", texto: "Você garante a vaga e me conta o objetivo da campanha." },
+      { titulo: "Roteiro", texto: "Escrito com estratégia pro momento da Black." },
+      { titulo: "Aprovação", texto: "Você aprova antes de eu gravar." },
+      { titulo: "Gravação", texto: "Cenário, luz e narrativa no padrão do briefing." },
+      { titulo: "Entrega", texto: "Pasta no Drive com versões pra post e pra anúncio." }
+    ];
+
+    const depoimentos = [
+      { texto: "Ótima construção do roteiro, com uma abordagem natural e criativa. O conteúdo ficou natural, dinâmico e super alinhado ao briefing.", nome: "Domidona", nicho: "Moda" },
+      { texto: "Era um vídeo desse mesmo que estava imaginando, ficou muito bom de verdade. Esse vídeo vai ser um dos que vão bombar mesmo no patrocínio.", nome: "Bombado", nicho: "Gastronomia" },
+      { texto: "O vídeo ficou exatamente como eu gostaria. Seu roteiro foi muito bem escrito, apresentou a fachada, mostrou detalhes, falou de pontos positivos.", nome: "Camarão na Telha", nicho: "Gastronomia" },
+      { texto: "Gosto dessas coisas não tão enfeitadas, mas também com um toquezinho de capricho.", nome: "Matutos", nicho: "Gastronomia" },
+      { texto: "Parabéns pela estética do vídeo, ficou incrível.", nome: "Cookitos", nicho: "Gastronomia" }
+    ];
+
+    /* =====================================================================
+       DAQUI PRA BAIXO É O FUNCIONAMENTO. Não precisa mexer.
+       ===================================================================== */
+    document.documentElement.classList.add("js");
+    const menosMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const $ = id => document.getElementById(id);
+    function esc(texto) {
+      return String(texto).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    }
+    function preenche(id, texto) { const el = $(id); if (texto) el.textContent = texto; else el.hidden = true; }
+
+    // Links de WhatsApp
+    document.querySelectorAll("[data-zap]").forEach(a => {
+      a.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(MENSAGENS[a.dataset.zap] || MENSAGENS.geral)}`;
+    });
+
+    // Capa
+    $("seloAno").textContent = "Black Edition " + new Date().getFullYear();
+    preenche("posicionamento", OFERTA.posicionamento);
+    const resumo = [["resumoVagas", OFERTA.vagas && `<b>${esc(OFERTA.vagas)}</b> nesta agenda`], ["resumoValidade", OFERTA.validade && `Reservas até <b>${esc(OFERTA.validade)}</b>`]];
+    resumo.forEach(([id, html]) => { if (html) $(id).lastElementChild.innerHTML = html; else $(id).hidden = true; });
+    if (!OFERTA.vagas && !OFERTA.validade) $("resumoOferta").hidden = true;
+
+    // Cartão da oferta
+    preenche("nomePacote", OFERTA.pacote);
+    preenche("nomeOferta", OFERTA.titulo);
+    preenche("condicaoOferta", OFERTA.condicao);
+    preenche("notaOferta", OFERTA.nota);
+    $("itensOferta").innerHTML = OFERTA.itens.map(it =>
+      `<li${it.bonus ? ' class="bonus"' : ""}>${it.bonus ? "<b>Bônus</b>" : ""}${esc(it.texto)}</li>`).join("");
+    if (OFERTA.preco) $("precoOferta").innerHTML = (OFERTA.precoDe ? `<s>${esc(OFERTA.precoDe)}</s>` : "") + esc(OFERTA.preco);
+    else $("precoOferta").hidden = true;
+    const detalhes = [["Válida até", OFERTA.validade], ["Vagas", OFERTA.vagas]].filter(d => d[1]);
+    $("detalhesOferta").innerHTML = detalhes.map(([t, v]) => `<div><dt>${t}</dt><dd>${esc(v)}</dd></div>`).join("");
+    if (!detalhes.length) $("detalhesOferta").hidden = true;
+    $("barraTexto").textContent = [OFERTA.vagas, OFERTA.validade && "até " + OFERTA.validade].filter(Boolean).join(" · ");
+
+    // Seleção de vídeos
+    const galeria = $("galeria");
+    function desenhaGaleria() {
+      galeria.innerHTML = videos.map(v => `<li class="trabalho revelar visivel"><button type="button" class="abre-video" data-video="${esc(v.id)}" aria-label="Assistir vídeo de ${esc(v.marca || v.nicho)}">
+        <div class="midia"><img src="https://i.ytimg.com/vi/${esc(v.id)}/oardefault.jpg" alt="" loading="lazy" onerror="if(this.dataset.f){this.remove()}else{this.dataset.f=1;this.src='https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg'}"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span></div>
+        <div class="info"><h3>${esc(v.marca || v.nicho)}</h3><span class="formato">${esc(v.marca ? (v.formato || v.nicho) : "Vídeo UGC")}</span></div></button></li>`).join("");
+    }
+    desenhaGaleria();
+
+    // Lê o título de cada vídeo no YouTube ("Marca • Formato") e guarda no navegador
+    const titulosYT = (() => { try { return JSON.parse(localStorage.getItem("titulosYT") || "{}"); } catch (e) { return {}; } })();
+    function aplicaTitulo(v, titulo) {
+      const partes = String(titulo).split(/\s*[•·|]\s*/).filter(Boolean);
+      const maiuscula = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+      if (!v.marca) v.marca = maiuscula(partes[0] || "");
+      if (!v.formato && partes.length > 1) v.formato = maiuscula(partes.slice(1).join(" · "));
+    }
+    videos.forEach(v => { if (titulosYT[v.id]) aplicaTitulo(v, titulosYT[v.id]); });
+    if (Object.keys(titulosYT).length) desenhaGaleria();
+    const faltam = videos.filter(v => !v.marca && !titulosYT[v.id]);
+    if (faltam.length && "fetch" in window) {
+      Promise.all(faltam.map(v =>
+        fetch("https://noembed.com/embed?url=" + encodeURIComponent("https://www.youtube.com/watch?v=" + v.id))
+          .then(r => r.json())
+          .then(d => { if (d && d.title) { titulosYT[v.id] = d.title; aplicaTitulo(v, d.title); } })
+          .catch(() => {})
+      )).then(() => {
+        try { localStorage.setItem("titulosYT", JSON.stringify(titulosYT)); } catch (e) {}
+        desenhaGaleria();
+      });
+    }
+
+    // Player do vídeo na própria página
+    const fundoVideo = $("fundoVideo");
+    const molduraVideo = $("molduraVideo");
+    const toqueCelular = window.matchMedia("(pointer: coarse)").matches;
+    const player = { el: null, tocando: false, mudo: false };
+    let focoAntesVideo = null;
+    function comando(func) {
+      if (player.el && player.el.contentWindow) player.el.contentWindow.postMessage(JSON.stringify({ event: "command", func, args: [] }), "*");
+    }
+    function abreVideo(id) {
+      focoAntesVideo = document.activeElement;
+      Object.assign(player, { tocando: true, mudo: toqueCelular });
+      const cod = encodeURIComponent(id);
+      const origem = location.protocol.startsWith("http") ? `&origin=${encodeURIComponent(location.origin)}` : "";
+      molduraVideo.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${cod}?autoplay=1&mute=${player.mudo ? 1 : 0}&controls=0&rel=0&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&loop=1&playlist=${cod}&enablejsapi=1${origem}" title="Vídeo da Yasmin Caetano" allow="autoplay; encrypted-media; picture-in-picture" tabindex="-1"></iframe>
+        <button type="button" class="toque-video" id="toqueVideo" aria-label="Pausar o vídeo"><span class="icone-pausa" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span></button>
+        <button type="button" class="botao-som" id="botaoSom">${player.mudo ? "Ativar som" : "Tirar som"}</button>`;
+      player.el = molduraVideo.querySelector("iframe");
+      molduraVideo.classList.remove("pausado");
+      $("toqueVideo").addEventListener("click", () => {
+        player.tocando = !player.tocando;
+        comando(player.tocando ? "playVideo" : "pauseVideo");
+        molduraVideo.classList.toggle("pausado", !player.tocando);
+        $("toqueVideo").setAttribute("aria-label", player.tocando ? "Pausar o vídeo" : "Continuar o vídeo");
+      });
+      $("botaoSom").addEventListener("click", e => {
+        player.mudo = !player.mudo;
+        comando(player.mudo ? "mute" : "unMute");
+        e.currentTarget.textContent = player.mudo ? "Ativar som" : "Tirar som";
+      });
+      fundoVideo.classList.add("aberto");
+      fundoVideo.setAttribute("aria-hidden", "false");
+      $("fecharVideo").focus();
+    }
+    function fechaVideo() {
+      fundoVideo.classList.remove("aberto");
+      fundoVideo.setAttribute("aria-hidden", "true");
+      molduraVideo.innerHTML = "";
+      player.el = null;
+      if (focoAntesVideo && focoAntesVideo.focus) focoAntesVideo.focus();
+    }
+    const videoAberto = () => fundoVideo.classList.contains("aberto");
+    $("capaDestaque").insertAdjacentHTML("afterbegin", `<img src="https://i.ytimg.com/vi/${esc(VIDEO_DESTAQUE)}/oardefault.jpg" alt="" onerror="if(this.dataset.f){this.remove()}else{this.dataset.f=1;this.src='https://i.ytimg.com/vi/${esc(VIDEO_DESTAQUE)}/hqdefault.jpg'}">`);
+    $("abreDestaque").addEventListener("click", () => abreVideo(VIDEO_DESTAQUE));
+    galeria.addEventListener("click", e => {
+      const botao = e.target.closest(".abre-video");
+      if (botao) abreVideo(botao.dataset.video);
+    });
+    $("fecharVideo").addEventListener("click", fechaVideo);
+    fundoVideo.addEventListener("click", e => { if (e.target === fundoVideo) fechaVideo(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape" && videoAberto()) fechaVideo(); });
+
+    // Fotos
+    const trilhoFotos = $("listaFotos");
+    trilhoFotos.innerHTML = fotosUgc.map(f => `<li><div class="midia"><img src="${esc(f.src)}" alt="${esc(f.alt)}" loading="lazy"></div></li>`).join("");
+    function moveFotos(direcao) {
+      const item = trilhoFotos.querySelector("li");
+      const passo = item ? item.getBoundingClientRect().width + parseFloat(getComputedStyle(trilhoFotos).columnGap || 0) : 300;
+      const fim = trilhoFotos.scrollWidth - trilhoFotos.clientWidth;
+      const comportamento = menosMovimento ? "auto" : "smooth";
+      if (direcao > 0 && trilhoFotos.scrollLeft >= fim - 4) trilhoFotos.scrollTo({ left: 0, behavior: comportamento });
+      else if (direcao < 0 && trilhoFotos.scrollLeft <= 4) trilhoFotos.scrollTo({ left: fim, behavior: comportamento });
+      else trilhoFotos.scrollBy({ left: direcao * passo, behavior: comportamento });
+    }
+    $("fotoAnterior").addEventListener("click", () => moveFotos(-1));
+    $("fotoProxima").addEventListener("click", () => moveFotos(1));
+    trilhoFotos.addEventListener("keydown", e => {
+      if (e.key === "ArrowRight") { e.preventDefault(); moveFotos(1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); moveFotos(-1); }
+    });
+
+    // Etapas e depoimentos
+    $("listaEtapas").innerHTML = etapas.map((et, i) =>
+      `<li class="etapa"><span class="bolinha" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span><h3>${esc(et.titulo)}</h3><p>${esc(et.texto)}</p></li>`).join("");
+    $("listaDepoimentos").innerHTML = depoimentos.map(d =>
+      `<li><figure class="depoimento"><blockquote>${esc(d.texto)}</blockquote><figcaption><b>${esc(d.nome)}</b><span>${esc(d.nicho)}</span></figcaption></figure></li>`).join("");
+
+    $("ano").textContent = new Date().getFullYear();
+
+    // Animação de entrada ao rolar
+    const revelaveis = document.querySelectorAll(".revelar");
+    if ("IntersectionObserver" in window && !menosMovimento) {
+      const obs = new IntersectionObserver(entradas => {
+        entradas.forEach(en => { if (en.isIntersecting) { en.target.classList.add("visivel"); obs.unobserve(en.target); } });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+      revelaveis.forEach(el => obs.observe(el));
+    } else {
+      revelaveis.forEach(el => el.classList.add("visivel"));
+    }
+
+    // Menu com borda ao rolar; barra do WhatsApp aparece depois da capa e some no contato
+    const menu = $("menu"), barraZap = $("barraZap"), capa = $("topo"), contato = $("contato");
+    function aoRolar() {
+      menu.classList.toggle("rolou", window.scrollY > 10);
+      const passouCapa = capa.getBoundingClientRect().bottom < window.innerHeight * .4;
+      const noContato = contato.getBoundingClientRect().top < window.innerHeight * .8;
+      barraZap.classList.toggle("visivel", passouCapa && !noContato);
+    }
+    window.addEventListener("scroll", aoRolar, { passive: true });
+    aoRolar();
+  </script>
+</body>
+</html>
