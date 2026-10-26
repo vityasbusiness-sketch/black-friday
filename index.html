@@ -209,13 +209,19 @@
     .nota-oferta { font-size: .84rem; color: var(--bege-fraco); margin: 16px 0 0; text-align: center; }
 
     /* Os pacotes lado a lado; o destaque um pouco mais largo */
-    .pacotes-black { list-style: none; margin: clamp(32px, 4vw, 48px) 0 0; padding: 0; display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(16px, 2vw, 24px); align-items: stretch; }
+    .pacotes-black { list-style: none; margin: clamp(32px, 4vw, 48px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 24px); align-items: stretch; }
+    .extras-oferta { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 2fr); gap: 28px; align-items: start; margin-top: clamp(28px, 4vw, 40px); }
+    .extras-oferta .condicoes { margin-top: 0; }
+    .lista-pecas { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linha); }
+    .lista-pecas li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--linha); font-size: .84rem; color: var(--bege-suave); }
+    .lista-pecas b { display: block; font-size: .92rem; font-weight: 600; color: var(--bege); }
+    .lista-pecas strong { font-family: var(--serif); font-weight: 400; font-size: 1.25rem; color: var(--ouro-claro); white-space: nowrap; }
     .pacotes-black .cartao-oferta { display: flex; flex-direction: column; }
     .pacotes-black .cartao-oferta:not(.destaque) { background: var(--noite-3); border-color: var(--linha); }
     .pacotes-black .cartao-oferta:not(.destaque)::before, .pacotes-black .cartao-oferta:not(.destaque)::after { border-color: var(--linha-forte); }
     .subtitulo-oferta { font-family: var(--sans); font-size: .72rem; font-weight: 600; letter-spacing: .26em; text-transform: uppercase; color: var(--ouro); margin: 0 0 14px; }
     .condicoes { margin-top: clamp(36px, 5vw, 56px); }
-    .lista-condicoes { margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .lista-condicoes { margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .lista-condicoes div { padding: 14px 16px; border: 1px solid var(--linha); border-radius: var(--raio); background: rgba(13, 11, 9, .35); }
     .lista-condicoes dt { font-size: .66rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--ouro); }
     .lista-condicoes dd { margin: 6px 0 0; font-size: .9rem; line-height: 1.45; color: var(--bege-suave); }
@@ -403,6 +409,7 @@
     @media (max-width: 980px) {
       .oferta-grade { grid-template-columns: 1fr; }
       .pacotes-black { grid-template-columns: 1fr; }
+      .extras-oferta { grid-template-columns: 1fr; }
       .lista-condicoes { grid-template-columns: 1fr 1fr; }
       .galeria { grid-template-columns: repeat(3, 1fr); }
       .fotos-trilho { grid-auto-columns: calc((100% - 16px) / 2); }
@@ -551,32 +558,35 @@
       #agora .oferta-texto .titulo-secao { margin-bottom: 16px; }
       .formatos-black { margin-top: 28px; }
 
-      /* Pacotes: funil em 3 colunas, itens em 2, preço e botão na mesma linha */
-      #oferta { padding: 44px 0; }
-      #oferta .cabeca-secao { margin-bottom: 18px; flex-wrap: nowrap; align-items: center; }
+      /* Pacotes: os 3 lado a lado, com o funil em linhas curtas e o preço acima do botão */
+      #oferta { padding: 36px 0; }
+      #oferta .cabeca-secao { margin-bottom: 14px; flex-wrap: nowrap; align-items: center; }
       #oferta .titulo-secao { max-width: none; font-size: 2.2rem; white-space: nowrap; }
       #oferta .cabeca-secao .apoio { font-size: .9rem; max-width: 40ch; }
-      .pacotes-black { margin-top: 0; grid-template-columns: 1fr 1fr; }
-      .pacotes-black .cartao-oferta { padding: 20px 26px; }
+      .pacotes-black { margin-top: 0; }
+      .pacotes-black .cartao-oferta { padding: 20px 24px; }
       .cartao-oferta .nome-pacote { margin-bottom: 4px; }
       .cartao-oferta h3 { font-size: 1.6rem; margin-bottom: 4px; }
       .cartao-oferta .condicao { margin-bottom: 12px; font-size: .9rem; }
-      .funil { grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
-      .funil li, .funil li:nth-child(2), .funil li:nth-child(3) { grid-template-columns: 1fr; gap: 2px; margin: 0; padding: 8px 12px; align-items: start; }
-      .funil .etapa b { display: inline; margin-left: 6px; }
-      .funil p { font-size: .78rem; line-height: 1.4; }
-      .itens-oferta { columns: 2; column-gap: 24px; margin-bottom: 0; border-top: 0; }
-      .itens-oferta li { break-inside: avoid; padding: 4px 0 4px 20px; border-bottom: 0; font-size: .86rem; }
+      .funil { gap: 4px; margin-bottom: 10px; }
+      .funil li, .funil li:nth-child(2), .funil li:nth-child(3) { grid-template-columns: 124px 1fr; gap: 8px; margin: 0; padding: 6px 12px; }
+      .funil .etapa { letter-spacing: .14em; white-space: nowrap; }
+      .funil .etapa b { display: inline; margin-left: 6px; font-size: .95rem; }
+      .funil p { font-size: .76rem; line-height: 1.3; }
+      .itens-oferta { margin-bottom: 0; border-top: 0; }
+      .itens-oferta li { padding: 4px 0 4px 20px; border-bottom: 0; font-size: .88rem; }
       .itens-oferta li::before { top: 11px; width: 8px; height: 8px; }
-      .preco-linha { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--linha); }
-      .preco-bloco { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; margin: 0; padding: 0; border: 0; }
-      .preco-normal { flex-basis: 100%; }
-      .preco-oferta { font-size: 2.1rem; }
-      .economia { margin: 0; }
-      .preco-linha .botao { width: auto; flex: none; padding: 14px 22px; }
-      .nota-oferta { margin-top: 10px; }
-      .condicoes { margin-top: 16px; }
-      .condicoes .subtitulo-oferta { margin-bottom: 8px; }
+      .preco-linha { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--linha); }
+      .preco-bloco { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; margin: 0 0 12px; }
+      .preco-normal { order: 0; }
+      .economia { order: 1; margin: 0; padding: 2px 9px; }
+      .preco-oferta { order: 2; flex-basis: 100%; font-size: 2.1rem; }
+      .preco-linha .botao { padding: 13px 20px; }
+      .extras-oferta { margin-top: 18px; gap: 24px; }
+      .extras-oferta .subtitulo-oferta { margin-bottom: 8px; }
+      .lista-pecas li { padding: 8px 0; font-size: .8rem; }
+      .lista-pecas b { display: inline; margin-right: 6px; }
+      .lista-condicoes { gap: 8px; }
       .lista-condicoes div { padding: 8px 12px; }
       .lista-condicoes dd { font-size: .82rem; margin-top: 2px; line-height: 1.4; }
     }
@@ -800,11 +810,17 @@
 
         <!-- Os pacotes vêm de OFERTA.pacotes, no script -->
         <ul class="pacotes-black" id="listaPacotes"></ul>
-        <p class="nota-oferta" id="notaOferta"></p>
 
-        <div class="condicoes revelar">
-          <h3 class="subtitulo-oferta">Vale pra todos os pacotes</h3>
-          <dl class="lista-condicoes" id="listaCondicoes"></dl>
+        <div class="extras-oferta">
+          <div class="pecas revelar">
+            <h3 class="subtitulo-oferta">Por peça</h3>
+            <!-- Os preços por peça vêm de OFERTA.pecas, no script -->
+            <ul class="lista-pecas" id="listaPecas"></ul>
+          </div>
+          <div class="condicoes revelar">
+            <h3 class="subtitulo-oferta">Vale pra todos os pacotes</h3>
+            <dl class="lista-condicoes" id="listaCondicoes"></dl>
+          </div>
         </div>
       </div>
     </section>
@@ -863,34 +879,50 @@
       // Datas da agenda de Black. A Black Friday é dia 27/11: tudo é entregue antes.
       fechamento: "13 de novembro",
       produtoAte: "16 de novembro",
-      // Pacotes de Black. precoNormal aparece riscado e precoBlack em destaque (só números, sem "R$").
-      // destaque: true deixa o cartão em evidência. funil: os vídeos por etapa da compra ([] esconde o bloco).
+      // Preço por peça (só números, sem "R$"). O "valor normal" riscado de cada pacote é a soma das peças dele.
+      pecas: {
+        editado: { nome: "Vídeo editado", descricao: "Com roteiro e legenda", preco: 300 },
+        lofi: { nome: "Vídeo lo-fi", descricao: "Sem edição pesada", preco: 180 },
+        gancho: { nome: "Variação de gancho", descricao: "Mesma peça com abertura nova", preco: 50 }
+      },
+      // Pacotes de Black. pecas: quantas de cada peça entram no pacote. precoBlack: o valor com desconto.
+      // destaque: true deixa o cartão em evidência. funil: os vídeos por momento da Black ([] esconde o bloco).
       pacotes: [
         {
-          nome: "Performance", titulo: "Funil de Black", destaque: true,
-          paraQuem: "Pra rodar anúncio e testar criativos durante a Black.",
-          funil: [
-            { etapa: "Topo", titulo: "Atrair", texto: "Pra quem ainda não conhece a sua marca parar no anúncio." },
-            { etapa: "Meio", titulo: "Convencer", texto: "O produto em uso, na vida real, pra gerar confiança." },
-            { etapa: "Fundo", titulo: "Converter", texto: "Pra levar à compra no momento exato da oferta." }
-          ],
-          itens: ["3 vídeos com roteiro estratégico, um pra cada etapa do funil", "6 fotos profissionais", "90 dias de direito de uso em anúncios", "Uso vitalício nas redes sociais", "1 rodada de ajustes"],
-          precoNormal: 790, precoBlack: 630
+          nome: "Esquenta", destaque: false,
+          paraQuem: "Pra aquecer o público antes da data.",
+          pecas: { editado: 2, gancho: 1 },
+          funil: [],
+          itens: ["2 vídeos editados, com roteiro e legenda", "1 variação de gancho"],
+          precoBlack: 520
         },
         {
-          nome: "Estratégico", titulo: "Volume pra Black", destaque: false,
-          paraQuem: "Pra escalar com volume e trocar de criativo sem cansar o público.",
+          nome: "Funil Completo", destaque: true, selo: "Mais completo",
+          paraQuem: "Um vídeo pra cada momento da Black.",
+          pecas: { editado: 3, gancho: 2 },
+          funil: [
+            { etapa: "Antes", titulo: "Esquenta", texto: "Aquece o público e gera desejo." },
+            { etapa: "No dia", titulo: "Black", texto: "Converte no momento da oferta." },
+            { etapa: "Depois", titulo: "Pós", texto: "Alcança quem deixou pra depois." }
+          ],
+          itens: ["3 vídeos editados, com roteiro e legenda", "2 variações de gancho"],
+          precoBlack: 750
+        },
+        {
+          nome: "Volume pra Anúncio", destaque: false,
+          paraQuem: "Pra trocar de criativo sem cansar o público.",
+          pecas: { lofi: 4, gancho: 3 },
           funil: [],
-          itens: ["5 vídeos com roteiro estratégico", "10 fotos profissionais", "120 dias de direito de uso em anúncios", "Uso vitalício nas redes sociais", "2 rodadas de ajustes"],
-          precoNormal: 1190, precoBlack: 950
+          itens: ["4 vídeos lo-fi, sem edição pesada", "3 variações de gancho"],
+          precoBlack: 690
         }
       ],
-      // Texto embaixo dos pacotes
-      nota: "Vídeo avulso e pacote Validação seguem com o valor normal, a partir de R$ 300.",
       // O que vai escrito em todo pacote. Fechamento e produto em mãos entram sozinhos, a partir das datas acima.
       condicoes: [
-        ["Entrega", "Em até 7 dias depois do produto em mãos, com roteiro aprovado por você antes de gravar"],
-        ["Pagamento", "50% pra fechar e 50% na entrega"]
+        ["Ajustes", "Duas rodadas de ajuste inclusas"],
+        ["Pagamento", "50% na aprovação e 50% na entrega"],
+        ["Direito de uso", "Vitalício no orgânico + 4 meses de tráfego pago, já inclusos"],
+        ["Entrega expressa", "Em menos de 5 dias: mais 30%"]
       ]
     };
 
@@ -1032,18 +1064,20 @@
     const reais = n => "R$ " + n.toLocaleString("pt-BR");
 
     // Pacotes de Black (antes dos links de WhatsApp, porque os botões deles também viram link)
+    const precoNormal = pc => Object.entries(pc.pecas || {}).reduce((soma, [id, qtd]) => soma + ((OFERTA.pecas[id] || {}).preco || 0) * qtd, 0);
     $("listaPacotes").innerHTML = OFERTA.pacotes.map(pc => {
       const funil = pc.funil || [];
+      pc.precoNormal = precoNormal(pc);
       const economia = pc.precoNormal && pc.precoBlack ? pc.precoNormal - pc.precoBlack : 0;
       return `<li class="cartao-oferta revelar${pc.destaque ? " destaque" : ""}">
-        <p class="nome-pacote">${esc(pc.nome)} · Black</p>
-        <h3>${esc(pc.titulo)}</h3>
+        <p class="nome-pacote">${esc(pc.selo || "Pacote de Black")}</p>
+        <h3>${esc(pc.nome)}</h3>
         <p class="condicao">${esc(pc.paraQuem)}</p>
         ${funil.length ? `<ol class="funil" aria-label="Os vídeos, um para cada etapa da compra">${funil.map(f => `<li><span class="etapa">${esc(f.etapa)}<b>${esc(f.titulo)}</b></span><p>${esc(f.texto)}</p></li>`).join("")}</ol>` : ""}
         <ul class="itens-oferta">${pc.itens.map(it => `<li>${esc(it)}</li>`).join("")}</ul>
         <div class="preco-linha">
           <div class="preco-bloco">
-            ${pc.precoNormal ? `<p class="preco-normal"><span>Valor normal</span> <s>${reais(pc.precoNormal)}</s></p>` : ""}
+            ${pc.precoNormal > pc.precoBlack ? `<p class="preco-normal"><span>Valor normal</span> <s>${reais(pc.precoNormal)}</s></p>` : ""}
             ${pc.precoBlack ? `<p class="preco-oferta">${reais(pc.precoBlack)} <small>na Black</small></p>` : ""}
             ${economia > 0 ? `<p class="economia">Economia de ${reais(economia)}</p>` : ""}
           </div>
@@ -1051,7 +1085,8 @@
         </div>
       </li>`;
     }).join("");
-    preenche("notaOferta", OFERTA.nota);
+    $("listaPecas").innerHTML = Object.values(OFERTA.pecas).map(p =>
+      `<li><span><b>${esc(p.nome)}</b> ${esc(p.descricao)}</span><strong>${reais(p.preco)}</strong></li>`).join("");
     const condicoes = [
       OFERTA.fechamento && ["Fechamento", "Até " + OFERTA.fechamento],
       OFERTA.produtoAte && ["Produto em mãos", "Até " + OFERTA.produtoAte + ", pra entregar tudo antes da Black (27/11)"]
