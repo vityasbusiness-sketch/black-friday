@@ -6,9 +6,19 @@
   <title>Yasmin Caetano | Black Edition</title>
   <meta name="description" content="Black Edition de Yasmin Caetano, UGC Creator: uma agenda reduzida de Black Friday para marcas que querem vender mais sem perder a elegância.">
   <meta name="theme-color" content="#0d0b09">
+  <!-- Prévia do link (WhatsApp, Instagram etc.). A imagem precisa do endereço completo pra aparecer. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Yasmin Caetano · UGC Creator">
+  <meta property="og:url" content="https://vityasbusiness-sketch.github.io/black-friday/">
   <meta property="og:title" content="Yasmin Caetano | Black Edition">
-  <meta property="og:description" content="Agenda de Black Friday para marcas que querem vender com estratégia e estética.">
-  <meta property="og:image" content="fotos/capa-larga.webp">
+  <meta property="og:description" content="Pacotes de Black Friday: vídeos UGC com roteiro estratégico e estética de campanha. Agenda de novembro aberta.">
+  <meta property="og:image" content="https://vityasbusiness-sketch.github.io/black-friday/fotos/og-black.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Yasmin Caetano, Black Edition: pacotes de Black Friday, agenda de novembro aberta">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
 
   <!-- Fontes: as mesmas do portfólio. Fraunces (títulos), Allura (assinatura) e Plus Jakarta Sans (texto). -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -523,6 +533,22 @@
       .barra-zap .botao { min-height: 46px; padding: 12px 18px; font-size: .84rem; flex: none; }
     }
 
+    /* ============ CELULAR: capa como no portfólio principal, com a foto larga e o nome ao lado ============ */
+    @media (max-width: 760px) {
+      .capa-fundo { position: absolute; top: var(--topo); left: 0; right: 0; bottom: auto; height: 80vw; max-height: none; }
+      .capa-fundo img { object-position: 33% 40%; }
+      /* Escurece só o lado do nome, pra ele ler bem sem cobrir o rosto */
+      .capa-fundo::after { background: linear-gradient(90deg, rgba(13, 11, 9, 0) 45%, rgba(13, 11, 9, .55) 70%, rgba(13, 11, 9, .7) 100%), linear-gradient(0deg, var(--noite) 0%, rgba(13, 11, 9, 0) 18%); }
+      .capa-conteudo { margin-top: 0; padding-top: 0; }
+      .capa-texto { display: grid; grid-template-columns: 56% minmax(0, 1fr); grid-template-rows: 1fr auto auto 1fr; max-width: none; }
+      .capa-texto::before { content: ""; grid-column: 1; grid-row: 1 / 5; height: 80vw; }
+      .capa-texto .selo-black { grid-column: 2; grid-row: 2; justify-self: start; margin: 0 0 6px; padding: 4px 9px 4px 7px; gap: 6px; font-size: .48rem; letter-spacing: .14em; white-space: nowrap; }
+      .capa-texto .selo-black .estrela { width: 7px; height: 7px; }
+      .capa-texto .nome-capa { grid-column: 2; grid-row: 3; font-size: clamp(1.7rem, 8.6vw, 2.4rem); margin: 0; text-shadow: 0 1px 2px rgba(13, 11, 9, .7), 0 0 18px rgba(13, 11, 9, .6); }
+      .capa-texto .posicionamento, .capa-texto .frase, .capa-texto .acoes, .capa-texto .resumo-oferta, .capa-texto .numeros-capa { grid-column: 1 / -1; }
+      .capa-texto .posicionamento { margin-top: 22px; }
+    }
+
     /* ============ COMPUTADOR: cada seção cabe numa tela, sem precisar rolar dentro dela ============ */
     @media (min-width: 1101px) {
       section { padding: 52px 0; }
@@ -627,7 +653,6 @@
     <!-- ============ 1. CAPA ============ -->
     <section class="capa" id="topo" aria-labelledby="titulo-capa">
       <picture class="capa-fundo">
-        <source media="(max-width: 760px)" srcset="fotos/capa-celular.webp">
         <img src="fotos/capa-larga.webp" alt="Yasmin Caetano à noite em um restaurante com jardim, com um drink de frutas vermelhas na mesa" width="2600" height="1150" fetchpriority="high">
       </picture>
 
